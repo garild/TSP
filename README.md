@@ -2,11 +2,10 @@
 
 ## This project was seperate for 2 application layers:
 
-I. Backend - microservices
+I. Backend - microservices - ks8
 - [ ] **DDD** - Domain Driven Design architecture implementation
 - [ ] **CQRS** - Command Query Responsibility Segregation command patern 
 - [ ] **WebApi** - Service in .Net Core Framework
-- [ ] **EntityFramework Core - ORM** -  object-relational mapper witch allow db (enitites) migration and delivery fluent API for CRUD operation etc
 - [ ] **JWT Authorize** - Json Web Token authorization
 - [ ] **NLog** - log message has associated log level, which identifies how important/detailed the message 
 - [ ] **Cookie Authentication ASP.NET Core**
