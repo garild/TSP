@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace Infrastructure.Cqrs.Decorator
 {
@@ -21,13 +21,13 @@ namespace Infrastructure.Cqrs.Decorator
             try
             {
                 _logger.LogInformation(
-                    $"{typeof(T).FullName} serialized input command: {JsonConvert.SerializeObject(command)}");
+                    $"{typeof(T).FullName} serialized input command: {JsonSerializer.Serialize(command)}");
                 return _runEnvironment.RunCommand<T, TOut>(command);
             }
             catch (Exception e)
             {
                 _logger.LogError(e,
-                    $"An error occurred while executing {typeof(T).FullName}, serialized input command: {JsonConvert.SerializeObject(command)}");
+                    $"An error occurred while executing {typeof(T).FullName}, serialized input command: {JsonSerializer.Serialize(command)}");
                 throw;
             }
         }
@@ -37,13 +37,13 @@ namespace Infrastructure.Cqrs.Decorator
             try
             {
                 _logger.LogInformation(
-                    $"{typeof(T).FullName} serialized input command: {JsonConvert.SerializeObject(command)}");
+                    $"{typeof(T).FullName} serialized input command: {JsonSerializer.Serialize(command)}");
                 _runEnvironment.RunCommand(command);
             }
             catch (Exception e)
             {
                 _logger.LogError(e,
-                    $"An error occurred while executing {typeof(T).FullName}, serialized input command: {JsonConvert.SerializeObject(command)}");
+                    $"An error occurred while executing {typeof(T).FullName}, serialized input command: {JsonSerializer.Serialize(command)}");
                 throw;
             }
         }
@@ -53,14 +53,14 @@ namespace Infrastructure.Cqrs.Decorator
             try
             {
                 _logger.LogInformation(
-                      $"{typeof(TQuery).FullName} serialized query input: {JsonConvert.SerializeObject(query)}");
+                      $"{typeof(TQuery).FullName} serialized query input: {JsonSerializer.Serialize(query)}");
 
                 return _runEnvironment.RunQuery<TQuery, TResponse>(query);
             }
             catch (Exception e)
             {
                 _logger.LogError(e,
-                    $"An error occurred while executing {typeof(TQuery).FullName}, serialized input command: {JsonConvert.SerializeObject(query)}");
+                    $"An error occurred while executing {typeof(TQuery).FullName}, serialized input command: {JsonSerializer.Serialize(query)}");
                 throw;
             }
         }
