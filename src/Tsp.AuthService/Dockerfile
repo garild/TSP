@@ -1,0 +1,23 @@
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS base
+WORKDIR /app
+EXPOSE 5001
+ENV ASPNETCORE_ENVIRONMENT Development
+ENV ASPNETCORE_URLS http://+:5001
+
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
+WORKDIR /src
+COPY ["src/Tsp.AuthService/Tsp.AuthService.csproj", "src/Tsp.AuthService/"]
+COPY ["infrastructure/Auth/Auth.csproj", "infrastructure/Auth/"]
+RUN dotnet restore "src/Tsp.AuthService/Tsp.AuthService.csproj"
+COPY . .
+WORKDIR "/src/src/Tsp.AuthService"
+RUN dotnet build "Tsp.AuthService.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet build -v q -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "Tsp.AuthService.dll"]
