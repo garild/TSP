@@ -16,6 +16,7 @@ I. Backend - microservices - ks8
 - [ ] Kibana
 - [ ] Elasticsearch
 - [ ] FluentD
+- [x] **ElasticsearchSerilog** - this is required to user-friend write log in kibana, log formatt
 - [ ] Redis
 - [ ] MongoDB
 
