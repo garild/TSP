@@ -58,8 +58,8 @@ namespace Tsp.AuthService
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseSerilogRequestLogging(env);
+                
+            app.UseSerilogRequestLogger();
 
             app.UseHttpsRedirection();
 

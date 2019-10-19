@@ -6,10 +6,9 @@ namespace ElasticsearchSerilog
 {
     public static class ApplicationBuilderExtension
     {
-        public static void UseSerilogRequestLogging(this IApplicationBuilder applicationBuilder, IHostEnvironment env)
+        public static void UseSerilogRequestLogger(this IApplicationBuilder applicationBuilder)
         {
-            if (!env.IsDevelopment())
-                applicationBuilder.UseSerilogRequestLogging();
+            applicationBuilder.UseSerilogRequestLogging();
         }
     }
 }

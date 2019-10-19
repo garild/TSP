@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting.Elasticsearch;
 
@@ -8,7 +9,7 @@ namespace ElasticsearchSerilog
 {
     public static class SerilogWebHostBuilderExtensions
     {
-        public static void UseSerilog(this IWebHostBuilder webBuilder, LogEventLevel overideMicrosoftLogLevel = LogEventLevel.Warning)
+        public static void UseSerilog(this IWebHostBuilder webBuilder, LogEventLevel minimumLevelLog = LogEventLevel.Information, LogEventLevel overideMicrosoftLogLevel = LogEventLevel.Warning)
         {
             webBuilder.UseSerilog((ctx, config) =>
             {
@@ -19,7 +20,7 @@ namespace ElasticsearchSerilog
                 }
                 else
                 {
-                    config.MinimumLevel.Information().Enrich.FromLogContext();
+                    config.MinimumLevel.ControlledBy(new LoggingLevelSwitch(minimumLevelLog)).Enrich.FromLogContext();
                     config.WriteTo.Console();
                 }
             });
