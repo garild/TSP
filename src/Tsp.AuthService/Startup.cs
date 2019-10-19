@@ -44,6 +44,8 @@ namespace Tsp.AuthService
 
             services.AddAuthJwt(Configuration);
 
+            services.AddHttpClient();
+
             services.AddControllers()
                 .AddJsonOptions(json =>
                         {
