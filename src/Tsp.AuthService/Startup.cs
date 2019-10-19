@@ -57,11 +57,10 @@ namespace Tsp.AuthService
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+                app.UseSerilogRequestLogger();
 
             app.UseMiddleware<ExceptionHandlingMiddleware>();
-            app.UseSerilogRequestLogger();
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 

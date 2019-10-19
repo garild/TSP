@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting.Elasticsearch;
+using Microsoft.Extensions.Hosting;
 
 namespace ElasticsearchSerilog
 {
@@ -13,6 +13,8 @@ namespace ElasticsearchSerilog
         {
             webBuilder.UseSerilog((ctx, config) =>
             {
+                var env = ctx.HostingEnvironment.EnvironmentName;
+
                 if (ctx.HostingEnvironment.IsProduction() || ctx.HostingEnvironment.IsStaging())
                 {
                     config.MinimumLevel.Override("Microsoft", overideMicrosoftLogLevel);

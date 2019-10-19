@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tsp.AuthService", "src\Tsp.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticsearchSerilog", "infrastructure\ElasticsearchSerilog\ElasticsearchSerilog.csproj", "{7B2F6C16-0EBA-4C48-BD1E-6286605F0E12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandling", "infrastructure\ExceptionHandling\ExceptionHandling.csproj", "{2E50BB48-C75D-461E-BC26-3292C1AA822C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionHandling", "infrastructure\ExceptionHandling\ExceptionHandling.csproj", "{2E50BB48-C75D-461E-BC26-3292C1AA822C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
