@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Tsp.AuthService.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class PocController
     {
         private readonly ILogger logger;
@@ -15,7 +12,6 @@ namespace Tsp.AuthService.Controllers
         {
             logger = loggerFactory.CreateLogger<PocController>();
         }
-
 
         [HttpGet]
         public void Info()

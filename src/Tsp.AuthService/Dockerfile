@@ -7,6 +7,7 @@ COPY ["src/Tsp.AuthService/Tsp.AuthService.csproj", "src/Tsp.AuthService/"]
 COPY ["infrastructure/Auth/Auth.csproj", "infrastructure/Auth/"]
 COPY ["infrastructure/ElasticsearchSerilog/ElasticsearchSerilog.csproj", "infrastructure/ElasticsearchSerilog/"]
 COPY ["infrastructure/ExceptionHandling/ExceptionHandling.csproj", "infrastructure/ExceptionHandling/"]
+COPY ["infrastructure/HealthCheck/HealthCheck.csproj", "infrastructure/HealthCheck/"]
 RUN dotnet restore "src/Tsp.AuthService/Tsp.AuthService.csproj" --force
 COPY . .
 WORKDIR "/src/Tsp.AuthService"

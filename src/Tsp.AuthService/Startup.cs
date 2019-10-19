@@ -3,6 +3,7 @@ using Auth.JWT;
 using ElasticsearchSerilog;
 using ExceptionHandling;
 using ExceptionHandling.Exceptions;
+using HealthCheck;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -49,6 +50,8 @@ namespace Tsp.AuthService
                             json.JsonSerializerOptions.WriteIndented = true;
                         }
                 );
+
+            services.AddBaseHealthChecks();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +77,8 @@ namespace Tsp.AuthService
             {
                 endpoints.MapControllers();
             });
+
+            app.UseHealthCheck();
         }
     }
 }

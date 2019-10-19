@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticsearchSerilog", "inf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionHandling", "infrastructure\ExceptionHandling\ExceptionHandling.csproj", "{2E50BB48-C75D-461E-BC26-3292C1AA822C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthCheck", "infrastructure\HealthCheck\HealthCheck.csproj", "{F63B42D5-4392-4F20-A966-52FC2D0F4441}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{2E50BB48-C75D-461E-BC26-3292C1AA822C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E50BB48-C75D-461E-BC26-3292C1AA822C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E50BB48-C75D-461E-BC26-3292C1AA822C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F63B42D5-4392-4F20-A966-52FC2D0F4441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F63B42D5-4392-4F20-A966-52FC2D0F4441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F63B42D5-4392-4F20-A966-52FC2D0F4441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F63B42D5-4392-4F20-A966-52FC2D0F4441}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{50FD92D7-9160-47DC-AE55-726D4D572E1C} = {233DEDAF-E263-4618-A862-49D3A63F25AF}
 		{7B2F6C16-0EBA-4C48-BD1E-6286605F0E12} = {A6D11E07-5485-4771-8A41-AE4820B49AA9}
 		{2E50BB48-C75D-461E-BC26-3292C1AA822C} = {A6D11E07-5485-4771-8A41-AE4820B49AA9}
+		{F63B42D5-4392-4F20-A966-52FC2D0F4441} = {A6D11E07-5485-4771-8A41-AE4820B49AA9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BB0B53A2-230F-4C9F-86BF-5F88242910F7}
