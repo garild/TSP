@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\infrastructure\Auth\Auth.csproj" />
+    <ProjectReference Include="..\..\infrastructure\ElasticsearchSerilog\ElasticsearchSerilog.csproj" />
   </ItemGroup>
 
   <ItemGroup>
