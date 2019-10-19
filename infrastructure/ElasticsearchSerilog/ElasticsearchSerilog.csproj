@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.8.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.0.1-dev-00109" />
+    <PackageReference Include="serilog.formatting.elasticsearch" Version="8.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.2-dev-00824" />
+    <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="8.0.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.0.0" />
+  </ItemGroup>
+
+</Project>

@@ -1,5 +1,6 @@
 using Auth.DI;
 using Auth.JWT;
+using ElasticsearchSerilog;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -57,6 +58,8 @@ namespace Tsp.AuthService
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSerilogRequestLogging(env);
 
             app.UseHttpsRedirection();
 

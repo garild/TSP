@@ -3,11 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UserSecretsId>b8a3c2f4-8c10-410c-8353-41d93d42eee2</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
-    <PublishReadyToRun>true</PublishReadyToRun>
-    <TieredCompilationQuickJit>true</TieredCompilationQuickJit>
-    <PublishTrimmed>true</PublishTrimmed>
+    <Null>enable</Null>
   </PropertyGroup>
 
   <ItemGroup>

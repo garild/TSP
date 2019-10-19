@@ -24,14 +24,5 @@ namespace Tsp.AuthService.Controllers
 
             return Json(user);
         }
-
-        [HttpGet]
-        [Authorize]
-        [Route("[action]")]
-        public JsonResult Login([FromHeader] string authorization)
-        {
-            var aa = _authorizeHandler.TokenExpired(authorization.Substring(7));
-            return Json(new { status = 200 });
-        }
     }
 }

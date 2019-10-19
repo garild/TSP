@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{23
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tsp.AuthService", "src\Tsp.AuthService\Tsp.AuthService.csproj", "{50FD92D7-9160-47DC-AE55-726D4D572E1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticsearchSerilog", "infrastructure\ElasticsearchSerilog\ElasticsearchSerilog.csproj", "{7B2F6C16-0EBA-4C48-BD1E-6286605F0E12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{50FD92D7-9160-47DC-AE55-726D4D572E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50FD92D7-9160-47DC-AE55-726D4D572E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50FD92D7-9160-47DC-AE55-726D4D572E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B2F6C16-0EBA-4C48-BD1E-6286605F0E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B2F6C16-0EBA-4C48-BD1E-6286605F0E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B2F6C16-0EBA-4C48-BD1E-6286605F0E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B2F6C16-0EBA-4C48-BD1E-6286605F0E12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{D4F84C7F-2E52-47E0-AF71-F8D6750CF757} = {A6D11E07-5485-4771-8A41-AE4820B49AA9}
 		{FEAF3E7D-4689-4361-A0AA-D325D5B72F89} = {A6D11E07-5485-4771-8A41-AE4820B49AA9}
 		{50FD92D7-9160-47DC-AE55-726D4D572E1C} = {233DEDAF-E263-4618-A862-49D3A63F25AF}
+		{7B2F6C16-0EBA-4C48-BD1E-6286605F0E12} = {A6D11E07-5485-4771-8A41-AE4820B49AA9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BB0B53A2-230F-4C9F-86BF-5F88242910F7}
