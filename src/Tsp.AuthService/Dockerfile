@@ -8,13 +8,13 @@ COPY ["infrastructure/Auth/Auth.csproj", "infrastructure/Auth/"]
 COPY ["infrastructure/ElasticsearchSerilog/ElasticsearchSerilog.csproj", "infrastructure/ElasticsearchSerilog/"]
 COPY ["infrastructure/ExceptionHandling/ExceptionHandling.csproj", "infrastructure/ExceptionHandling/"]
 COPY ["infrastructure/HealthCheck/HealthCheck.csproj", "infrastructure/HealthCheck/"]
-RUN dotnet restore "src/Tsp.AuthService/Tsp.AuthService.csproj" --force
+RUN dotnet restore src/Tsp.AuthService/Tsp.AuthService.csproj
 COPY . .
-WORKDIR "/src/Tsp.AuthService"
-RUN dotnet build -c Release -o /app/build
+WORKDIR /src/Tsp.AuthService
+RUN dotnet build "Tsp.AuthService.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet build -v q -c Release -o /app/publish --no-restore
+RUN dotnet build -v q "Tsp.AuthService.csproj" -c Release -o /app/publish --no-restore
 
 FROM base AS final
 WORKDIR /app

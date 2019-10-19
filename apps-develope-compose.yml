@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.3'
 
 services:
 
@@ -6,8 +6,9 @@ services:
 ## Application Services
 ##########################################################################
   auth-svc:
-    # build:
-    #   context: ./src/Tsp.AuthService #On windows it's not work
+    build:
+      context: ./
+      dockerfile: ./src/Tsp.AuthService/Dockerfile
     networks: 
       - app_net
     image: auth-svc
@@ -63,12 +64,10 @@ services:
       - "24224:24224"
       - "24224:24224/udp"
       - "9880:9880"
-    depends_on:
-      - elasticsearch-svc
     networks: 
       - app_net
-    env_file:
-      - ./stack/fluentd/.env
+    # env_file:
+    #   - ./stack/fluentd/.env
 
   elasticsearch-svc:
     image: local/elasticsearch
