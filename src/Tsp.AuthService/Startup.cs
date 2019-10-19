@@ -1,6 +1,7 @@
 using Auth.DI;
 using Auth.JWT;
 using ElasticsearchSerilog;
+using ExceptionHandling;
 using ExceptionHandling.Exceptions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -61,6 +62,7 @@ namespace Tsp.AuthService
                 app.UseSerilogRequestLogger();
 
             app.UseMiddleware<ExceptionHandlingMiddleware>();
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             app.UseRouting();
 
