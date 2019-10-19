@@ -7,7 +7,7 @@ services:
 ##########################################################################
   auth-svc:
     # build:
-    #   context: ./src/Tsp.AuthService
+    #   context: ./src/Tsp.AuthService #On windows it's not work
     networks: 
       - app_net
     image: auth-svc
@@ -18,6 +18,11 @@ services:
     restart: always
     environment:
       - ASPNETCORE_URLS=http://+:5010
+      - ASPNETCORE_ENVIRONMENT=Production
+      - HEALTHCHECK_URL=http://localhost:5010/hc
+      - FLUENTD_HOST=http://fluentd-svc:9880
+      - HEALTHCHECK_ENDPOINT=/hc
+      - ELASTICSEARCH_HOSTS=http://elasticsearch-svc:9200
     # env_file: 
     #   - ./auth/.env
     ports:

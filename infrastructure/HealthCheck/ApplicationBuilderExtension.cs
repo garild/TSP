@@ -40,12 +40,12 @@ namespace HealthCheck
                        description = e.Key,
                        status = e.Value.Status.ToString(),
                        tag = e.Value.Tags,
-                       errorMessage = e.Value.Exception?.Message ?? e.Value.Exception?.InnerException.Message,
+                       errorMessage = e.Value.Exception?.Message ?? e.Value.Exception?.InnerException.Message ?? e.Value.Description,
                        responseTime = e.Value.Duration.TotalMilliseconds
                    }),
                    totalResponseTime = hr.TotalDuration.TotalMilliseconds,
 
-               }, Formatting.Indented); ;
+               }, Formatting.Indented); ; ;
 
             return httpContext.Response.WriteAsync(result);
         }
