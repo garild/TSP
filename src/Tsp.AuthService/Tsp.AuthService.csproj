@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\infrastructure\Auth\Auth.csproj" />
     <ProjectReference Include="..\..\infrastructure\ElasticsearchSerilog\ElasticsearchSerilog.csproj" />
+    <ProjectReference Include="..\..\infrastructure\ExceptionHandling\ExceptionHandling.csproj" />
   </ItemGroup>
 
   <ItemGroup>
