@@ -1,4 +1,13 @@
 #  Track Software Projects
+` This project is something similar to Jira, but of course no as advanced like jira. The following functions will be available, such as:`
+`  - create/update/close/reject task `
+`  - add remarks `
+`  - move task from project to other project `
+`  - basic authentication `
+`  - user privileges `
+` Im gonna use EF or DacPac for e2e and integration test layer .`
+` For other stack like EFK, there will be log dashboard with resitricted privileges etc. ... more info upcomming soon`
+
 
 #### This project was seperate for 2 application layers:
 ## This project was seperate for 2 application layers:
@@ -7,22 +16,23 @@ I. Backend - microservices - ks8
 - [ ] **CQRS** - Command Query Responsibility Segregation command patern 
 - [ ] **WebApi** - Service in .Net Core Framework
 - [ ] **JWT Authorize** - Json Web Token authorization
-- [x] **ElasticsearchSerilog** - this is required to user-friend write log in kibana, log format. Log message has associated log level, which identifies how important/detailed the message 
+- [x] **ElasticsearchSerilog** - this is required to user-friendly write log in kibana, log format. Log message has associated log level, which identifies how important/detailed the message 
 - [ ] **Cookie Authentication ASP.NET Core**
 - [ ] **NUnit Test** - integration,e2 and unit tests  
 - [ ] **Docker** - containler services builder/publisher
-- [x] **CI scripts**
+- [x] **CI/D scripts** 
 - [ ] **Swagger** - UI provides a display framework that reads an OpenAPI specification document and generates an interactive documentation website 
 
 #### EFK Stack
-- [ ] Kibana
-- [ ] Elasticsearch
-- [ ] FluentD
+- [x] Kibana - the complete Elastic Stack for **free** and start visualizing, analyzing, and exploring data. 
+- [x] Elasticsearch -  RESTful search and analytics engine capable of addressing a growing number of use cases.
+- [x] FluentD - log aggregat collector, catch every console logs in docker containers
 
 ### Database
-- [ ] Redis
-- [ ] MongoDB
-- [ ] EF 
+- [ ] Redis ?
+- [ ] MongoDB ?
+- [ ] EF ?
+- [ ] DacPac ?
 
 II. Frontend - Angular 7 + Material
 
