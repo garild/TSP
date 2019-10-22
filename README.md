@@ -9,8 +9,6 @@
  For other stack like EFK, there will be log dashboard with resitricted privileges etc. ... more info upcomming soon!.`
 
 
-#### This project was seperate for 2 application layers:
-### This project was seperate for 2 application layers:
 ## I. Backend - microservices - ks8
 - [ ] **DDD** - Domain Driven Design architecture implementation
 - [ ] **CQRS** - Command Query Responsibility Segregation command patern 
@@ -45,11 +43,11 @@
 3. ng serve -o
 ```
 
-## Backedn stack
+### Backend stack
 **Services:**
 - [ ] AuthApi
 
-## Setup
+### Setup
 **Docker Compose**
 
 Run powershell script
