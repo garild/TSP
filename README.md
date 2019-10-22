@@ -10,8 +10,8 @@
 
 
 #### This project was seperate for 2 application layers:
-## This project was seperate for 2 application layers:
-I. Backend - microservices - ks8
+### This project was seperate for 2 application layers:
+## I. Backend - microservices - ks8
 - [ ] **DDD** - Domain Driven Design architecture implementation
 - [ ] **CQRS** - Command Query Responsibility Segregation command patern 
 - [ ] **WebApi** - Service in .Net Core Framework
@@ -34,7 +34,7 @@ I. Backend - microservices - ks8
 - [ ] EF ?
 - [ ] DacPac ?
 
-II. Frontend - Angular 7 + Material
+## II. Frontend - Angular 7 + Material
 
 - https://material-components.github.io/material-components-web-catalog/#/
 
