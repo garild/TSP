@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using ElasticsearchSerilog;
+using Serilog.Events;
 
 namespace Tsp.AuthService
 {
@@ -16,7 +17,7 @@ namespace Tsp.AuthService
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.CaptureStartupErrors(true);
-                    webBuilder.UseSerilog();
+                    webBuilder.UseSerilog(overideMicrosoftLogLevel: LogEventLevel.Warning);
                     webBuilder.UseStartup<Startup>();
                 });
                 

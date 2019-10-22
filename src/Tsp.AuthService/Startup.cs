@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using Swagger;
+using Swagger.Extensions;
+using System.Collections.Generic;
 
 namespace Tsp.AuthService
 {
@@ -55,6 +59,19 @@ namespace Tsp.AuthService
                 );
 
             services.AddBaseHealthChecks();
+            services.AddSwaggerDocumentation(() => new Dictionary<string, SwaggerOptions> 
+            {
+                { "auth", new SwaggerOptions
+                        {
+                            Version = "v1",
+                            Name = "Auth api",
+                            Title = "Authorization Service",
+                            ParameterLocation = ParameterLocation.Header,
+                            EnableBearerAuth = false,
+
+                        }
+                }
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,6 +99,7 @@ namespace Tsp.AuthService
             });
 
             app.UseHealthCheck();
+            app.UseSwaggerDocumentation("auth");
         }
     }
 }

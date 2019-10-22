@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -9,6 +10,7 @@ namespace ExceptionHandling
 {
     public class RequestResponseLoggingMiddleware
     {
+        private readonly string Regex_Ingore_Route = @"\.(.*)?";
         private readonly RequestDelegate _next;
         private readonly ILogger _logger;
 
@@ -20,6 +22,13 @@ namespace ExceptionHandling
 
         public async Task Invoke(HttpContext context)
         {
+            var regexMatch = Regex.Match(context.Request.Path.Value, Regex_Ingore_Route);
+            if (regexMatch.Success)
+            {
+                await _next(context);
+                return;
+            }
+
             var contextGuid = Guid.NewGuid();
 
             var request = await FormatRequest(context.Request, contextGuid);
