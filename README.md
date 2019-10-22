@@ -1,5 +1,5 @@
 #  Track Software Projects
-` This project is something similar to Jira, but of course no as advanced like jira. The following functions will be available, such as:
+ This project is something similar to Jira, but of course no as advanced like jira. The following functions will be available, such as:
   - create/update/close/reject task 
   - add remarks 
   - move task from project to other project 
@@ -39,16 +39,18 @@ II. Frontend - Angular 7 + Material
 - https://material-components.github.io/material-components-web-catalog/#/
 
 **CLI:**
+```
 1. npm install
 2. ng build
 3. ng serve -o
-
+```
 
 **Services:**
 - [ ] AuthApi
 
 
 **Docker Compose**
-
-- run as powershell script ./app-develop-stack.ps1 
-- alternative "docker-compose -apps-develope-compose.yml up --build -d 
+ Run powershell script
+` ./app-develop-stack.ps1 `
+   or 
+` docker-compose -apps-develope-compose.yml up --build -d `
