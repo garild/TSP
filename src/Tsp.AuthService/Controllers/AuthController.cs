@@ -2,6 +2,7 @@
 using Auth.JWT;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Tsp.AuthService.Controllers
 {
@@ -18,9 +19,19 @@ namespace Tsp.AuthService.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("[action]")]
+        public JsonResult Register([FromBody] JwtUserDto user)
+        {
+           // TODO Integrate with EF DB to save user
+            _authorizeHandler.AuthorizeUser(user, HttpContext);
+            return Json(user);
+        }
+
+        [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Route("[action]")]
         public JsonResult Login([FromBody] JwtUserDto user)
         {
-            _authorizeHandler.AuthorizeUser(user, HttpContext);
+            //TODO EF inMemory User validate etc
 
             return Json(user);
         }

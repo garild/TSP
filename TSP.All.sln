@@ -19,6 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionHandling", "infras
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthCheck", "infrastructure\HealthCheck\HealthCheck.csproj", "{F63B42D5-4392-4F20-A966-52FC2D0F4441}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{A588EE43-C05B-43E1-B6FD-2BE9E9F92A58}"
+	ProjectSection(SolutionItems) = preProject
+		apps-develope-compose.yml = apps-develope-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
