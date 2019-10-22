@@ -1,0 +1,6 @@
+{
+  "/api/auth/*": {
+    "target": "http://localhost:5010",
+    "secure": false
+  }
+}
