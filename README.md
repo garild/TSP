@@ -12,8 +12,8 @@
 ## I. Backend - microservices - ks8
 - [ ] **DDD** - Domain Driven Design architecture implementation
 - [x] **CQRS** - Command Query Responsibility Segregation command patern 
-- [ ] **WebApi** - Service in .Net Core Framework
-- [ ] **JWT Authorize** - Json Web Token authorization
+- [x] **WebApi** - Service in .Net Core Framework
+- [X] **JWT Authorize** - Json Web Token authorization
 - [x] **ElasticsearchSerilog** - this is required to user-friendly write log in kibana, log format. Log message has associated log level, which identifies how important/detailed the message 
 - [ ] **Cookie Authentication ASP.NET Core**
 - [ ] **NUnit Test** - integration,e2 and unit tests  
