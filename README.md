@@ -23,12 +23,12 @@ I. Backend - microservices - ks8
 - [x] **CI/D scripts** 
 - [ ] **Swagger** - UI provides a display framework that reads an OpenAPI specification document and generates an interactive documentation website 
 
-#### EFK Stack
+## EFK Stack
 - [x] Kibana - the complete Elastic Stack for **free** and start visualizing, analyzing, and exploring data. 
 - [x] Elasticsearch -  RESTful search and analytics engine capable of addressing a growing number of use cases.
 - [x] FluentD - log aggregat collector, catch every console logs in docker containers
 
-### Database
+## Database
 - [ ] Redis ?
 - [ ] MongoDB ?
 - [ ] EF ?
@@ -45,11 +45,13 @@ II. Frontend - Angular 7 + Material
 3. ng serve -o
 ```
 
+## Backedn stack
 **Services:**
 - [ ] AuthApi
 
-
+## Setup
 **Docker Compose**
+
 Run powershell script
 
 ` ./app-develop-stack.ps1 `
