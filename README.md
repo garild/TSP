@@ -40,7 +40,7 @@
 ```
 1. npm install
 2. ng build
-3. ng serve -o
+3. ng serve -o --proxy-config proxy.conf.json 
 ```
 
 ## Backend stack
