@@ -24,6 +24,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{A588EE
 		apps-develope-compose.yml = apps-develope-compose.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{7DFD42C5-2B78-43C3-8CA0-ABD35C86FEA4}"
+	ProjectSection(SolutionItems) = preProject
+		app-develop-stack.ps1 = app-develop-stack.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +70,7 @@ Global
 		{7B2F6C16-0EBA-4C48-BD1E-6286605F0E12} = {A6D11E07-5485-4771-8A41-AE4820B49AA9}
 		{2E50BB48-C75D-461E-BC26-3292C1AA822C} = {A6D11E07-5485-4771-8A41-AE4820B49AA9}
 		{F63B42D5-4392-4F20-A966-52FC2D0F4441} = {A6D11E07-5485-4771-8A41-AE4820B49AA9}
+		{7DFD42C5-2B78-43C3-8CA0-ABD35C86FEA4} = {A588EE43-C05B-43E1-B6FD-2BE9E9F92A58}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BB0B53A2-230F-4C9F-86BF-5F88242910F7}
