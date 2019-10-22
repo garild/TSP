@@ -8,6 +8,7 @@
         public string DisplayName { get; set; }
         public string AccountStatus { get; set; }
         public string AccessToken { get; set; }
+        public string Password { get; set; }
         public string AssignedTeam { get; set; }
         public string UserPricipalName { get; set; }
         public string PhoneNumber { get; set; }

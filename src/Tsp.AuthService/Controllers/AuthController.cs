@@ -19,21 +19,21 @@ namespace Tsp.AuthService.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("[action]")]
-        public JsonResult Register([FromBody] JwtUserDto user)
+        public JsonResult Login([FromBody] JwtUserDto user)
         {
            // TODO Integrate with EF DB to save user
             _authorizeHandler.AuthorizeUser(user, HttpContext);
             return Json(user);
         }
 
-        [HttpPost]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [Route("[action]")]
-        public JsonResult Login([FromBody] JwtUserDto user)
-        {
-            //TODO EF inMemory User validate etc
+        //[HttpPost]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Route("[action]")]
+        //public JsonResult Login([FromBody] JwtUserDto user)
+        //{
+        //    //TODO EF inMemory User validate etc
 
-            return Json(user);
-        }
+        //    return Json(user);
+        //}
     }
 }
