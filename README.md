@@ -45,7 +45,7 @@
 
 ## Backend stack
 **Services:**
-- [ ] AuthApi
+- [X] AuthApi
 
 ## Setup
 **Docker Compose**
