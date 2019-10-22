@@ -43,11 +43,11 @@
 3. ng serve -o
 ```
 
-### Backend stack
+## Backend stack
 **Services:**
 - [ ] AuthApi
 
-### Setup
+## Setup
 **Docker Compose**
 
 Run powershell script
