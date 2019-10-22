@@ -50,7 +50,10 @@ II. Frontend - Angular 7 + Material
 
 
 **Docker Compose**
- Run powershell script
+Run powershell script
+
 ` ./app-develop-stack.ps1 `
+
    or 
+   
 ` docker-compose -apps-develope-compose.yml up --build -d `
