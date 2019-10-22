@@ -1,12 +1,12 @@
 #  Track Software Projects
-` This project is something similar to Jira, but of course no as advanced like jira. The following functions will be available, such as:`
-`  - create/update/close/reject task `
-`  - add remarks `
-`  - move task from project to other project `
-`  - basic authentication `
-`  - user privileges `
-` Im gonna use EF or DacPac for e2e and integration test layer .`
-` For other stack like EFK, there will be log dashboard with resitricted privileges etc. ... more info upcomming soon`
+` This project is something similar to Jira, but of course no as advanced like jira. The following functions will be available, such as:
+  - create/update/close/reject task 
+  - add remarks 
+  - move task from project to other project 
+  - basic authentication 
+  - user privileges 
+ Im gonna use EF or DacPac for e2e and integration test layer .
+ For other stack like EFK, there will be log dashboard with resitricted privileges etc. ... more info upcomming soon!.`
 
 
 #### This project was seperate for 2 application layers:
