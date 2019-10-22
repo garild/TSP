@@ -11,14 +11,14 @@
 
 ## I. Backend - microservices - ks8
 - [ ] **DDD** - Domain Driven Design architecture implementation
-- [ ] **CQRS** - Command Query Responsibility Segregation command patern 
+- [x] **CQRS** - Command Query Responsibility Segregation command patern 
 - [ ] **WebApi** - Service in .Net Core Framework
 - [ ] **JWT Authorize** - Json Web Token authorization
 - [x] **ElasticsearchSerilog** - this is required to user-friendly write log in kibana, log format. Log message has associated log level, which identifies how important/detailed the message 
 - [ ] **Cookie Authentication ASP.NET Core**
 - [ ] **NUnit Test** - integration,e2 and unit tests  
-- [ ] **Docker** - containler services builder/publisher
-- [x] **CI/D scripts** 
+- [x] **Docker** - containler services builder/publisher
+- [ ] **CI/D scripts** 
 - [ ] **Swagger** - UI provides a display framework that reads an OpenAPI specification document and generates an interactive documentation website 
 
 ## EFK Stack
