@@ -56,4 +56,4 @@ Run powershell script
 
    or 
    
-` docker-compose -apps-develope-compose.yml up --build -d `
+` docker-compose -f apps-develope-compose.yml up --build -d `
