@@ -32,7 +32,7 @@
 - [ ] EF ?
 - [ ] DacPac ?
 
-## II. Frontend - Angular 7 + Material
+## II. Frontend - Angular 8 + Material
 
 - https://material-components.github.io/material-components-web-catalog/#/
 
