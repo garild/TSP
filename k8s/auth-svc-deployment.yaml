@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: auth-svc
+  name: auth-svc
+spec:
+  replicas: 3
+  strategy: {}
+  selector:
+    matchLabels:
+      app: auth-svc
+  template:
+    metadata:
+      labels:
+        app: auth-svc
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://+:5010
+        - name: ELASTICSEARCH_HOSTS
+          value: http://elasticsearch-svc:9200
+        - name: FLUENTD_HOST
+          value: http://fluentd-svc:9880
+        - name: HEALTHCHECK_ENDPOINT
+          value: /hc
+        - name: HEALTHCHECK_URL
+          value: http://localhost:5010/hc
+        image: garild/tsp:auth-svc
+        name: auth-svc
+        ports:
+        - containerPort: 5010
+        resources: {}
+      hostname: auth-svc
+      restartPolicy: Always
+status: {}

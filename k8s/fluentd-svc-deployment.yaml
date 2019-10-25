@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f apps-develope-compose.yml
+    kompose.version: 1.16.0 (0c01309)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: fluentd-svc
+  name: fluentd-svc
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: fluentd-svc
+    spec:
+      containers:
+      - env:
+        - name: FLUENT_CONF
+          value: /fluentd/etc
+        image: local/fluentd
+        name: fluentd-svc
+        ports:
+        - containerPort: 24224
+        - containerPort: 24224
+          protocol: UDP
+        - containerPort: 9880
+        resources: {}
+      hostname: fluentd-svc
+      restartPolicy: Always
+status: {}
