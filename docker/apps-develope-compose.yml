@@ -6,12 +6,9 @@ services:
 ## Application Services
 ##########################################################################
   auth-svc:
-    build:
-      context: ./
-      dockerfile: ./src/Tsp.AuthService/Dockerfile
+    image: garild/tsp:auth-svc
     networks: 
       - app_net
-    image: auth-svc
     hostname: auth-svc
     container_name: auth-svc
     # depends_on:
@@ -50,7 +47,7 @@ services:
   fluentd-svc:
     image: local/fluentd
     build: 
-      context: ./stack/fluentd
+      context: ./images/fluentd
     restart: always
     container_name: fluentd-svc
     hostname: fluentd-svc
@@ -67,17 +64,17 @@ services:
     networks: 
       - app_net
     # env_file:
-    #   - ./stack/fluentd/.env
+    #   - ./images/fluentd/.env
 
   elasticsearch-svc:
     image: local/elasticsearch
     restart: always
     build:
-      context: ./stack/elasticsearch
+      context: ./images/elasticsearch
     container_name: elasticsearch-svc
     hostname: elasticsearch-svc
     env_file: 
-      - ./stack/elasticsearch/.env
+      - ./images/elasticsearch/.env
     ulimits:
         memlock:
             soft: -1
@@ -93,11 +90,11 @@ services:
     image: local/kibana
     restart: always
     build:
-      context: ./stack/kibana
+      context: ./images/kibana
     container_name: kibana-svc
     hostname: kibana-svc
     env_file: 
-      - ./stack/kibana/.env
+      - ./images/kibana/.env
     links:
       - elasticsearch-svc
     depends_on:
