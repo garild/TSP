@@ -12,11 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\infrastructure\Auth\Auth.csproj" />
-    <ProjectReference Include="..\..\infrastructure\ElasticsearchSerilog\ElasticsearchSerilog.csproj" />
-    <ProjectReference Include="..\..\infrastructure\ExceptionHandling\ExceptionHandling.csproj" />
-    <ProjectReference Include="..\..\infrastructure\HealthCheck\HealthCheck.csproj" />
-    <ProjectReference Include="..\..\infrastructure\Swagger\Swagger.csproj" />
+    <ProjectReference Include="..\infrastructure\Auth\Auth.csproj" />
+    <ProjectReference Include="..\infrastructure\ElasticsearchSerilog\ElasticsearchSerilog.csproj" />
+    <ProjectReference Include="..\infrastructure\ExceptionHandling\ExceptionHandling.csproj" />
+    <ProjectReference Include="..\infrastructure\HealthCheck\HealthCheck.csproj" />
+    <ProjectReference Include="..\infrastructure\Swagger\Swagger.csproj" />
   </ItemGroup>
 
   <ItemGroup>
