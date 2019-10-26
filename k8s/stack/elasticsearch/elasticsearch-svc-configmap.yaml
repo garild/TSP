@@ -1,4 +1,10 @@
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: 26.10.2019
+  labels:
+    service: elasticsearch-svc
+  name: elasticsearch-configmap
 data:
   '"ES_JAVA_OPTS': -Xms1g -Xmx1g"
   ELASTIC_PASSWORD: SP33dMy$QL
@@ -9,9 +15,3 @@ data:
   discovery.type: single-node
   xpack.security.audit.enabled: "true"
   xpack.security.enabled: "true"
-kind: ConfigMap
-metadata:
-  creationTimestamp: null
-  labels:
-    service: elasticsearch-svc
-  name: elasticsearch-configmap

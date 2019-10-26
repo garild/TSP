@@ -1,12 +1,8 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f apps-develope-compose.yml
-    kompose.version: 1.16.0 (0c01309)
-  creationTimestamp: null
   labels:
-    io.kompose.service: elasticsearch-svc
+    service: elasticsearch-svc
   name: elasticsearch-svc
 spec:
   replicas: 1
@@ -15,7 +11,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: elasticsearch-svc
+        service: elasticsearch-svc
     spec:
       containers:
       - env:

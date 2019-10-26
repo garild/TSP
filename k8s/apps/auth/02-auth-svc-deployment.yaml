@@ -18,17 +18,30 @@ spec:
       containers:
       - env:
         - name: ASPNETCORE_ENVIRONMENT
-          value: Production
+          valueFrom:
+            configMapKeyRef:
+              name: auth-configmap
+              key: environment
         - name: ASPNETCORE_URLS
-          value: http://+:5010
+          valueFrom:
+            configMapKeyRef:
+              name: auth-configmap
+              key: services-host
         - name: ELASTICSEARCH_HOSTS
-          value: http://elasticsearch-svc:9200
+          valueFrom:
+            configMapKeyRef:
+              name: auth-configmap
+              key: elasticsearch-host
         - name: FLUENTD_HOST
-          value: http://fluentd-svc:9880
-        - name: HEALTHCHECK_ENDPOINT
-          value: /hc
+          valueFrom:
+            configMapKeyRef:
+              name: auth-configmap
+              key: fluentd-host
         - name: HEALTHCHECK_URL
-          value: http://localhost:5010/hc
+          valueFrom:
+            configMapKeyRef:
+              name: auth-configmap
+              key: healthcheck-host
         image: garild/tsp:auth-svc
         name: auth-svc
         ports:
