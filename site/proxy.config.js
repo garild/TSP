@@ -3,7 +3,7 @@ const PROXY_CONFIG = [
       context: [
           "/api"
       ],
-      target: "http://localhost:5001", // API GATEWAY HOST
+      target: "http://localhost:5010", // API GATEWAY HOST
       secure: false,
       //changeOrigin: true // GW will be on external IP that why is need this options
   }
