@@ -5,6 +5,7 @@ metadata:
     service: auth-svc
   name: auth-svc
 spec:
+  type: NodePort
   ports:
   - name: "5010"
     port: 5010
