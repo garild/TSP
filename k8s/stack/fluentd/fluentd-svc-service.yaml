@@ -6,7 +6,7 @@ metadata:
     kompose.version: 1.16.0 (0c01309)
   creationTimestamp: null
   labels:
-    io.kompose.service: fluentd-svc
+    service: fluentd-svc
   name: fluentd-svc
 spec:
   ports:
@@ -21,6 +21,6 @@ spec:
     port: 9880
     targetPort: 9880
   selector:
-    io.kompose.service: fluentd-svc
+    service: fluentd-svc
 status:
   loadBalancer: {}

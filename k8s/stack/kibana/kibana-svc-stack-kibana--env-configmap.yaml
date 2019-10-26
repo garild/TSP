@@ -15,5 +15,5 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: kibana-svc-stack-kibana--env
+    service: kibana-svc-stack-kibana--env
   name: kibana-svc-stack-kibana--env
