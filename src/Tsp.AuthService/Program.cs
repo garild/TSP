@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using ElasticsearchSerilog;
 using Serilog.Events;
+using System;
 
 namespace Tsp.AuthService
 {
@@ -19,6 +20,7 @@ namespace Tsp.AuthService
                     webBuilder.CaptureStartupErrors(true);
                     webBuilder.UseSerilog(overideMicrosoftLogLevel: LogEventLevel.Warning);
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS") ?? "http://[::]:5010");
                 });
                 
     }
