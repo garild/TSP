@@ -20,7 +20,7 @@ namespace Tsp.AuthService
                     webBuilder.CaptureStartupErrors(true);
                     webBuilder.UseSerilog(overideMicrosoftLogLevel: LogEventLevel.Warning);
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS") ?? "http://[::]:5010");
+                    webBuilder.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS"));
                 });
                 
     }

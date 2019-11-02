@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Serilog;
-using Serilog.Core;
-using Serilog.Events;
+using Serilog.Formatting.Json;
 using Serilog.Formatting.Elasticsearch;
+using Serilog.Events;
 using Microsoft.Extensions.Hosting;
 
 namespace ElasticsearchSerilog
@@ -13,19 +13,32 @@ namespace ElasticsearchSerilog
         {
             webBuilder.UseSerilog((ctx, config) =>
             {
-                var env = ctx.HostingEnvironment.EnvironmentName;
+               
+                    if (ctx.HostingEnvironment.IsProduction() || ctx.HostingEnvironment.IsStaging())
+                    {
+                        config.MinimumLevel.Override("Microsoft", overideMicrosoftLogLevel);
 
-                if (ctx.HostingEnvironment.IsProduction() || ctx.HostingEnvironment.IsStaging())
-                {
-                    config.MinimumLevel.Override("Microsoft", overideMicrosoftLogLevel);
-                    config.WriteTo.Console(new ElasticsearchJsonFormatter());
-                }
-                else
-                {
-                    config.MinimumLevel.ControlledBy(new LoggingLevelSwitch(minimumLevelLog)).Enrich.FromLogContext();
-                    config.WriteTo.Console();
-                }
-            });
+                        if (string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH")))
+                            config.WriteTo.Console(new ElasticsearchJsonFormatter());
+                        else
+                        {
+                            config.ReadFrom.Configuration(ctx.Configuration).Enrich.FromLogContext().WriteTo.File(
+                            new JsonFormatter(),
+                            System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH"),
+                            rollingInterval: RollingInterval.Day,
+                            shared: true,
+                            flushToDiskInterval: System.TimeSpan.FromSeconds(1)
+                            );
+                        }
+                    }
+
+                    if (ctx.HostingEnvironment.IsDevelopment())
+                    {
+                        config.MinimumLevel.Information().Enrich.FromLogContext();
+                        config.WriteTo.Console();
+                    }
+
+                });
         }
     }
 }
