@@ -2,15 +2,14 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    service: auth-svc
+    io.kompose.service: auth-svc
   name: auth-svc
 spec:
-  type: NodePort
   ports:
-  - name: "5010"
+  - name: auth-svc-port
     port: 5010
     targetPort: 5010
   selector:
-    service: auth-svc
+    io.kompose.service: auth-svc
 status:
   loadBalancer: {}

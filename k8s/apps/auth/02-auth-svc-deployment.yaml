@@ -2,51 +2,44 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: auth-svc
+    io.kompose.service: auth-svc
   name: auth-svc
 spec:
-  replicas: 3
-  strategy: {}
   selector:
     matchLabels:
-      app: auth-svc
+      io.kompose.service: auth-svc
+  replicas: 3
+  strategy: {}
   template:
     metadata:
+      creationTimestamp: null
       labels:
-        app: auth-svc
+        io.kompose.service: auth-svc
     spec:
-      containers:
-      - env:
-        - name: ASPNETCORE_ENVIRONMENT
-          valueFrom:
-            configMapKeyRef:
-              name: auth-configmap
-              key: environment
-        - name: ASPNETCORE_URLS
-          valueFrom:
-            configMapKeyRef:
-              name: auth-configmap
-              key: services-host
-        - name: ELASTICSEARCH_HOSTS
-          valueFrom:
-            configMapKeyRef:
-              name: auth-configmap
-              key: elasticsearch-host
-        - name: FLUENTD_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: auth-configmap
-              key: fluentd-host
-        - name: HEALTHCHECK_URL
-          valueFrom:
-            configMapKeyRef:
-              name: auth-configmap
-              key: healthcheck-host
-        image: garild/tsp:auth-svc
-        name: auth-svc
-        ports:
-        - containerPort: 5010
-        resources: {}
-      hostname: auth-svc
+      hostname: auth-svc-svc   
       restartPolicy: Always
+      containers:
+        - name: auth-svc-svc
+          image: garild/tsp:auth-svc
+          ports:
+            - containerPort: 5010
+              name: "auth-svc-port"
+          resources: {}
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:5010
+            - name: ASPNETCORE_ENVIRONMENT 
+              value: "Production"
+            - name: FLUENTD_LOG_PATH
+              value: "/var/apps-logging/auth-svc_.log"
+          volumeMounts:
+          - name: test-volume
+            mountPath: /var/apps-logging
+      volumes:
+      - name: test-volume
+        hostPath:
+          # directory location on host
+          path:  /var/apps-logging
+          # this field is optional
+          type: Directory
 status: {}

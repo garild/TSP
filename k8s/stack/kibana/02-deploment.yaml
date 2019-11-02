@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana
+  namespace: default
+  labels:
+    app.kubernetes.io/component: kibana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: kibana
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: kibana
+    spec:
+      containers:
+      - name: kibana
+        image: docker.elastic.co/kibana/kibana:7.4.0
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 100m
+        env:
+          - name: ELASTICSEARCH_HOSTS
+            valueFrom:
+              configMapKeyRef:
+                key: ES_HOST
+                name: kibana-config-map
+          - name: ELASTICSEARCH_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                key: ES_USR_LOGIN
+                name: kibana-config-map
+          - name: ELASTICSEARCH_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                key: ES_USR_PWD
+                name: kibana-config-map
+          - name: XPACK_SECURITY_ENABLED
+            valueFrom:
+              configMapKeyRef:
+                key: XPACK_AUTH_BASIC
+                name: kibana-config-map
+          - name: BROWSERSLIST_IGNORE_OLD_DATA
+            valueFrom:
+              configMapKeyRef:
+                key: OLD_DATA_IGNORE
+                name: kibana-config-map
+          - name: XPACK_MONITORING_ENABLED
+            valueFrom:
+              configMapKeyRef:
+                key: XPACK_MONITORING
+                name: kibana-config-map
+          - name: SERVER_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: NAME
+                name: kibana-config-map
+        ports:
+        - containerPort: 5601

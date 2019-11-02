@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  ES_HOST: "http://elasticsearch-svc:9200"
+  ES_USR_PWD: "SP33dMy$QL"
+  ES_USR_LOGIN: "elastic"
+  XPACK_AUTH_BASIC: "true"
+  XPACK_MONITORING: "true"
+  NAME: "kibana-k8s"
+  OLD_DATA_IGNORE: "true"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: kibana-config-map
+  name: kibana-config-map

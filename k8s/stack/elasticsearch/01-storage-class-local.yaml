@@ -3,7 +3,7 @@ kind: StorageClass
 apiVersion: storage.k8s.io/v1beta1
 metadata:
     name: elastic-local-storage
-provisioner: k8s.io/minikube-hostpath 
+provisioner: k8s.io/minikube-hostpath
 volumeBindingMode: WaitForFirstConsumer
 parameters:
   volumetype: "replicate:3"
