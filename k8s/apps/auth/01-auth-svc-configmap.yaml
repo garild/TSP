@@ -6,8 +6,6 @@ metadata:
   name: auth-configmap
 data:
   services-host: http://+:5010,
-  environment: Production,
-  healthcheck-host: http://localhost:5010/hc
   fluentd-host: http://fluentdsvc:9880,
   elasticsearch-host: http://elasticsearchsvc:9200
   service-logg-path: "/var/apps-logging"

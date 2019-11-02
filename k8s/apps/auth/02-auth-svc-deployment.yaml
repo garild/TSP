@@ -32,6 +32,20 @@ spec:
               value: "Production"
             - name: FLUENTD_LOG_PATH
               value: "/var/apps-logging/auth-svc_.log"
+            - name: K8S_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: ELASTICSEARCH_HOSTS
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-configmap
+                  key: elasticsearch-host
+            - name: FLUENTD_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-configmap
+                  key: fluentd-host
           volumeMounts:
           - name: test-volume
             mountPath: /var/apps-logging
