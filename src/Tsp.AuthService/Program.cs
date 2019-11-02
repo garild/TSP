@@ -18,7 +18,7 @@ namespace Tsp.AuthService
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.CaptureStartupErrors(true);
-                    webBuilder.UseSerilog(overideMicrosoftLogLevel: LogEventLevel.Warning);
+                    webBuilder.UseSerilog();
                     webBuilder.UseStartup<Startup>();
                     webBuilder.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS"));
                 });

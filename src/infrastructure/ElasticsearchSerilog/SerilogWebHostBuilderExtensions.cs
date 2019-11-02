@@ -13,32 +13,33 @@ namespace ElasticsearchSerilog
         {
             webBuilder.UseSerilog((ctx, config) =>
             {
-               
-                    if (ctx.HostingEnvironment.IsProduction() || ctx.HostingEnvironment.IsStaging())
-                    {
-                        config.MinimumLevel.Override("Microsoft", overideMicrosoftLogLevel);
 
-                        if (string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH")))
-                            config.WriteTo.Console(new ElasticsearchJsonFormatter());
-                        else
-                        {
-                            config.ReadFrom.Configuration(ctx.Configuration).Enrich.FromLogContext().WriteTo.File(
-                            new JsonFormatter(),
-                            System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH"),
-                            rollingInterval: RollingInterval.Day,
-                            shared: true,
-                            flushToDiskInterval: System.TimeSpan.FromSeconds(1)
-                            );
-                        }
-                    }
+                if (ctx.HostingEnvironment.IsProduction() || ctx.HostingEnvironment.IsStaging())
+                {
+                    config.MinimumLevel.Override("Microsoft", overideMicrosoftLogLevel);
 
-                    if (ctx.HostingEnvironment.IsDevelopment())
+                    if (string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH")))
+                        config.WriteTo.Console(new ElasticsearchJsonFormatter());
+                    else
                     {
-                        config.MinimumLevel.Information().Enrich.FromLogContext();
+                        config.ReadFrom.Configuration(ctx.Configuration).Enrich.FromLogContext().WriteTo.File(
+                        new JsonFormatter(),
+                        System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH"),
+                        rollingInterval: RollingInterval.Day,
+                        shared: true,
+                        flushToDiskInterval: System.TimeSpan.FromSeconds(1)
+                        );
+
                         config.WriteTo.Console();
                     }
+                }
 
-                });
+                if (ctx.HostingEnvironment.IsDevelopment())
+                {
+                    config.MinimumLevel.Information().Enrich.FromLogContext();
+                    config.WriteTo.Console();
+                }
+            });
         }
     }
 }
