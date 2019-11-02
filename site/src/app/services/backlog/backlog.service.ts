@@ -10,8 +10,7 @@ import { BacklogItem } from 'src/app/models';
 export class BacklogService {
 
   constructor(private httpclient: HttpClient) { }
-  baseUrl =""
   Create(backlogItem: BacklogItem) {
-    return this.httpclient.post(`${this.baseUrl}/api/backlog/create`, JSON.stringify(backlogItem));
+    return this.httpclient.post(`/api/backlog/create`, JSON.stringify(backlogItem));
   }
 }

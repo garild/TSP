@@ -2,9 +2,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: local-storage
-provisioner: kubernetes.io/aws-ebs
-parameters:
-  type: gp2
+provisioner: kubernetes.io/no-provisioner
 reclaimPolicy: Retain
 allowVolumeExpansion: true
 mountOptions:
@@ -14,7 +12,7 @@ volumeBindingMode: Immediate
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: example-pv
+  name: apps-logging-pv
 spec:
   capacity:
     storage: 100Gi

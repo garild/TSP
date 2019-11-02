@@ -22,19 +22,19 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(userName: string, password: string, teamName: string) {
+  login(login: string, password: string, assignedTeam: string) {
     return this.http
       .post<User>(`${this.baseUrl}/api/auth/login`, {
-        login: userName,
-        password: password,
-        assignedTeam: teamName
+        login,
+        password,
+        assignedTeam
       })
       .pipe(
         map(user => {
           if (user && user.accessToken) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             // in futher its should be asve as Cookie
-            localStorage.setItem("currentUser", JSON.stringify(user));
+            localStorage.setItem('currentUser', JSON.stringify(user));
             this.currentUserSubject.next(user);
           }
           return user;
@@ -43,7 +43,7 @@ export class AuthenticationService {
   }
 
   logout() {
-    localStorage.removeItem("currentUser");
+    localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
 }
