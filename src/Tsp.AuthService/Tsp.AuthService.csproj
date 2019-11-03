@@ -9,14 +9,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\infrastructure\Auth\Auth.csproj" />
-    <ProjectReference Include="..\infrastructure\ExceptionHandling\ExceptionHandling.csproj" />
-    <ProjectReference Include="..\infrastructure\HealthCheck\HealthCheck.csproj" />
-    <ProjectReference Include="..\infrastructure\Logger\Logger.csproj" />
-    <ProjectReference Include="..\infrastructure\Swagger\Swagger.csproj" />
+    <PackageReference Include="Tsp.Auth" Version="1.0.0" />
+    <PackageReference Include="Tsp.ExceptionHandling" Version="1.0.0" />
+    <PackageReference Include="Tsp.HealthCheck" Version="1.0.0" />
+    <PackageReference Include="Tsp.Logger" Version="1.0.0" />
+    <PackageReference Include="Tsp.Swagger" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
