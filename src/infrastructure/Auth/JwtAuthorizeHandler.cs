@@ -18,8 +18,14 @@ namespace Auth
         public void AuthorizeUser(JwtUserDto userDto,HttpContext context)
         {
             var jwt = _jwtProvider.Create(userDto, userDto.Roles);
+            jwt.Claims.TryGetValue(JwtRegisteredClaimNames.GivenName, out var firstName);
+            jwt.Claims.TryGetValue(JwtRegisteredClaimNames.FamilyName, out var lastName);
+
             context.User = new ClaimsPrincipal(jwt.Identity);
             userDto.AccessToken = jwt.AccessToken;
+            userDto.Id = jwt.Id;
+            userDto.FirstName = firstName;
+            userDto.LastName = lastName;
         }
 
         public bool TokenExpired(string token)

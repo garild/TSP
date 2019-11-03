@@ -102,6 +102,8 @@ namespace Auth.JWT
             claimsIdentity.AddClaims(new List<Claim>()
             {
                 new Claim(JwtRegisteredClaimNames.Sub, userDto.Id),
+                new Claim(JwtRegisteredClaimNames.GivenName, userDto.FirstName),
+                new Claim(JwtRegisteredClaimNames.FamilyName, userDto.LastName),
                 new Claim(JwtRegisteredClaimNames.UniqueName, userDto.Id),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, ToTimestamp(now).ToString()),
