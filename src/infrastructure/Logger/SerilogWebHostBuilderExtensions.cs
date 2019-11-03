@@ -24,7 +24,7 @@ namespace ElasticsearchSerilog
                 {
                     config.MinimumLevel.Override("Microsoft", overideMicrosoftLogLevel);
 
-                    // TODO  REMOVE THIS afterk8s will be deployed
+                    //TODO  REMOVE THIS after k8s will be deployed
                     if (string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH")))
                         config.WriteTo.Console(new ElasticsearchJsonFormatter());
                     else
