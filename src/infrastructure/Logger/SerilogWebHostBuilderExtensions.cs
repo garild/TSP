@@ -4,6 +4,7 @@ using Serilog.Formatting.Json;
 using Serilog.Formatting.Elasticsearch;
 using Serilog.Events;
 using Microsoft.Extensions.Hosting;
+using System.IO;
 
 namespace ElasticsearchSerilog
 {
@@ -30,7 +31,7 @@ namespace ElasticsearchSerilog
                     {
                         config.WriteTo.File(
                         new JsonFormatter(),
-                        System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH"),
+                        Path.Combine(System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH"), $"{System.Environment.GetEnvironmentVariable("SERVICE_NAME")}_.log"),
                         rollingInterval: RollingInterval.Day,
                         shared: true,
                         flushToDiskInterval: System.TimeSpan.FromSeconds(1)

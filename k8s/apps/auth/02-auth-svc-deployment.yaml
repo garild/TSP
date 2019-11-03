@@ -28,11 +28,13 @@ spec:
           env:
             - name: ASPNETCORE_URLS
               value: http://+:5010
+            - name: SERVICE_NAME
+              value: auth-svc
             - name: ASPNETCORE_ENVIRONMENT 
               value: "Production"
             - name: FLUENTD_LOG_PATH
-              value: "/var/apps-logging/auth-svc_.log"
-            - name: K8S_POD_NAME
+              value: "/var/apps-logging/"
+            - name: SERVICE_POD_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
