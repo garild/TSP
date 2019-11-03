@@ -13,16 +13,22 @@ namespace ElasticsearchSerilog
         {
             webBuilder.UseSerilog((ctx, config) =>
             {
+                config.ReadFrom.Configuration(ctx.Configuration)
+                    .Enrich.FromLogContext()
+                    .MinimumLevel.Is(minimumLevelLog)
+                    .Enrich.WithProperty("Environment", ctx.HostingEnvironment.EnvironmentName)
+                    .Enrich.WithProperty("ServiceId", System.Environment.GetEnvironmentVariable("SERVICE_POD_NAME"));
 
                 if (ctx.HostingEnvironment.IsProduction() || ctx.HostingEnvironment.IsStaging())
                 {
                     config.MinimumLevel.Override("Microsoft", overideMicrosoftLogLevel);
 
+                    // TODO  REMOVE THIS afterk8s will be deployed
                     if (string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH")))
                         config.WriteTo.Console(new ElasticsearchJsonFormatter());
                     else
                     {
-                        config.ReadFrom.Configuration(ctx.Configuration).Enrich.FromLogContext().WriteTo.File(
+                        config.WriteTo.File(
                         new JsonFormatter(),
                         System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH"),
                         rollingInterval: RollingInterval.Day,
@@ -36,7 +42,7 @@ namespace ElasticsearchSerilog
 
                 if (ctx.HostingEnvironment.IsDevelopment())
                 {
-                    config.MinimumLevel.Information().Enrich.FromLogContext();
+                    config.MinimumLevel.Information();
                     config.WriteTo.Console();
                 }
             });

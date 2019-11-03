@@ -10,6 +10,7 @@ namespace ElasticsearchSerilog
         public static void UseSerilogRequestLogger(this IApplicationBuilder applicationBuilder, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddSerilog();
+
             applicationBuilder.UseSerilogRequestLogging();
         }
     }

@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
 COPY ["src/Tsp.AuthService/Tsp.AuthService.csproj", "src/Tsp.AuthService/"]
 COPY ["src/infrastructure/Auth/Auth.csproj", "src/infrastructure/Auth/"]
 COPY ["src/infrastructure/Swagger/Swagger.csproj", "src/infrastructure/Swagger/"]
-COPY ["src/infrastructure/ElasticsearchSerilog/ElasticsearchSerilog.csproj", "src/infrastructure/ElasticsearchSerilog/"]
+COPY ["src/infrastructure/Logger/Logger.csproj", "src/infrastructure/Logger/"]
 COPY ["src/infrastructure/ExceptionHandling/ExceptionHandling.csproj", "src/infrastructure/ExceptionHandling/"]
 COPY ["src/infrastructure/HealthCheck/HealthCheck.csproj", "src/infrastructure/HealthCheck/"]
 RUN dotnet restore src/Tsp.AuthService/Tsp.AuthService.csproj
