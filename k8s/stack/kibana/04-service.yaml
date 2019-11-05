@@ -10,4 +10,4 @@ spec:
   - name: kibana-port
     port: 5601
   selector:
-    app: kibana
+    app.kubernetes.io/component: kibana

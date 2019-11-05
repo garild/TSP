@@ -1,15 +1,21 @@
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: default
+  labels:
+    app.kubernetes.io/component: kibana
+  name: kibana-configmap
 data:
-  ES_HOST: "http://elasticsearch-svc:9200"
-  ES_USR_PWD: "SP33dMy$QL"
-  ES_USR_LOGIN: "elastic"
   XPACK_AUTH_BASIC: "true"
   XPACK_MONITORING: "true"
   NAME: "kibana-k8s"
   OLD_DATA_IGNORE: "true"
-kind: ConfigMap
-metadata:
-  creationTimestamp: null
-  labels:
-    io.kompose.service: kibana-config-map
-  name: kibana-config-map
+  kibana.yml: |-
+    server.host: 0.0.0.0
+
+    elasticsearch:
+      hosts: ${ELASTICSEARCH_HOSTS}
+      username: ${ELASTICSEARCH_USERNAME}
+      password: ${ELASTICSEARCH_PASSWORD}
+
+---

@@ -18,6 +18,9 @@ spec:
       containers:
       - name: kibana
         image: docker.elastic.co/kibana/kibana:7.4.0
+        ports:
+        - containerPort: 5601
+          name: kibana-port
         resources:
           limits:
             cpu: 1000m
@@ -25,15 +28,9 @@ spec:
             cpu: 100m
         env:
           - name: ELASTICSEARCH_HOSTS
-            valueFrom:
-              configMapKeyRef:
-                key: ES_HOST
-                name: kibana-config-map
+            value: "http://elasticsearch-svc.default.svc.cluster.local:9200"
           - name: ELASTICSEARCH_USERNAME
-            valueFrom:
-              configMapKeyRef:
-                key: ES_USR_LOGIN
-                name: kibana-config-map
+            value: "elastic"
           - name: ELASTICSEARCH_PASSWORD
             valueFrom:
               secretKeyRef:
@@ -43,21 +40,28 @@ spec:
             valueFrom:
               configMapKeyRef:
                 key: XPACK_AUTH_BASIC
-                name: kibana-config-map
+                name: kibana-configmap
           - name: BROWSERSLIST_IGNORE_OLD_DATA
             valueFrom:
               configMapKeyRef:
                 key: OLD_DATA_IGNORE
-                name: kibana-config-map
+                name: kibana-configmap
           - name: XPACK_MONITORING_ENABLED
             valueFrom:
               configMapKeyRef:
                 key: XPACK_MONITORING
-                name: kibana-config-map
+                name: kibana-configmap
           - name: SERVER_NAME
             valueFrom:
               configMapKeyRef:
                 key: NAME
-                name: kibana-config-map
-        ports:
-        - containerPort: 5601
+                name: kibana-configmap
+        volumeMounts:
+        - name: config
+          mountPath: /usr/share/kibana/config/kibana.yml
+          readOnly: true
+          subPath: kibana.yml
+      volumes:
+      - name: config
+        configMap:
+          name: kibana-configmap

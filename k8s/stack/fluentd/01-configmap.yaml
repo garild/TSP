@@ -6,10 +6,6 @@ metadata:
     io.kompose.service: fluentd-config-map
   name: fluentd-config-map
 data:
-  ES_HOST: elasticsearch-svc
-  ES_PORT: "9200"
-  ES_SCHEME: "http"
-  UID: "0"
   fluentd.conf: |
       # fluentd/conf/fluent.conf
       <match fluent.**>

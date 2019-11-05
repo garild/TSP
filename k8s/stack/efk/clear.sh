@@ -15,11 +15,15 @@ sudo kubectl delete -n default service fluentd-svc
 sudo kubectl delete -n default service kibana-svc
 sudo kubectl delete -n default service elasticsearch-svc
 sudo kubectl delete -n default configmap fluentd-config-map
-sudo kubectl delete -n default configmap kibana-config-map
+sudo kubectl delete -n default configmap kibana-configmap
+sudo kubectl delete -n default configmap elasticsearch-configmap
 sudo kubectl delete -n default deployment kibana
 sudo kubectl delete -n default daemonset fluentd
 sudo kubectl delete -n default statefulset es-cluster 
 sudo kubectl delete -n default secret elasticsearch-user-password
+sudo kubectl delete storageclass local-storage
+sudo kubectl delete -n default ingress kabina-ingress
+sudo kubectl delete -n default secret $(sudo sudo kubectl get -n default secret |  awk '{ print $1 }' | grep fluentd-)
 
 echo  "${green} \n \n Done! \n \n ${reset}"  
 else

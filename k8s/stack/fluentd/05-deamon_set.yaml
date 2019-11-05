@@ -38,28 +38,21 @@ spec:
           protocol: TCP
         env:
           - name:  FLUENT_ELASTICSEARCH_HOST
-            valueFrom:
-              configMapKeyRef:
-                key: ES_HOST
-                name: fluentd-config-map
+            value: "elasticsearch-svc"
           - name:  FLUENT_ELASTICSEARCH_PORT
-            valueFrom:
-              configMapKeyRef:
-                key: ES_PORT
-                name: fluentd-config-map
+            value: "9200"
           - name: FLUENT_ELASTICSEARCH_SCHEME
-            valueFrom:
-              configMapKeyRef:
-                key: ES_SCHEME
-                name: fluentd-config-map
+            value: "http"
           - name: FLUENT_UID
-            valueFrom:
-              configMapKeyRef:
-                key: UID
-                name: fluentd-config-map
+            value: "0"
           # X-Pack Authentication
-          # =====================
-
+          - name: FLUENT_ELASTICSEARCH_USER
+            value: "elastic"
+          - name: FLUENT_ELASTICSEARCH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: elasticsearch-user-password
+                key: password
         resources:
           limits:
             memory: 200Mi
