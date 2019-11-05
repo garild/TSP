@@ -43,8 +43,11 @@ spec:
             value: "-Xms512m -Xmx512m"
           - name: ELASTIC_USERNAME
             value: "elastic"
-          - name: ELASTIC_PASSWORD
-            value: "SP33dMy$QL"
+          - name: ELASTICSEARCH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: elasticsearch-user-password
+                key: password
           - name: KIBANA_PASSWORD
             value: "SP33dMy$QL"  
           - name: discovery.seed_hosts

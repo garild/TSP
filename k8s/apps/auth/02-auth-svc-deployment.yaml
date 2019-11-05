@@ -48,6 +48,11 @@ spec:
                 configMapKeyRef:
                   name: auth-configmap
                   key: fluentd-host
+            - name: ELASTICSEARCH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: elasticsearch-user-password
+                  key: password
           volumeMounts:
           - name: test-volume
             mountPath: /var/apps-logging

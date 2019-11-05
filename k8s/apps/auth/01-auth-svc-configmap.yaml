@@ -5,7 +5,7 @@ metadata:
     service: auth-svc
   name: auth-configmap
 data:
-  services-host: http://+:5010,
-  fluentd-host: http://fluentdsvc:9880,
-  elasticsearch-host: http://elasticsearchsvc:9200
+  services-host: http://+:5010
+  fluentd-host: http://fluentd-svc:9880
+  elasticsearch-host: http://elasticsearch-svc:9200
   service-logg-path: "/var/apps-logging"

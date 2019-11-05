@@ -36,9 +36,9 @@ spec:
                 name: kibana-config-map
           - name: ELASTICSEARCH_PASSWORD
             valueFrom:
-              configMapKeyRef:
-                key: ES_USR_PWD
-                name: kibana-config-map
+              secretKeyRef:
+                name: elasticsearch-user-password
+                key: password
           - name: XPACK_SECURITY_ENABLED
             valueFrom:
               configMapKeyRef:
