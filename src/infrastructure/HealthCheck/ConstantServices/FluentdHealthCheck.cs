@@ -27,13 +27,13 @@ namespace HealthCheck.ConstantServices
                 var client = _clientFactory.CreateClient();
                 client.Timeout = TimeSpan.FromSeconds(5);
 
-                var response = await client.SendAsync(request);
+                var response = await client.SendAsync(request, cancellationToken);
 
                 response.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
             {
-                return HealthCheckResult.Unhealthy($"HealthCheck request to Fluentd endpoint {fluentdHostAddress} ,caused error . {ex.Message}");
+                return HealthCheckResult.Unhealthy($"HealthCheck request to Fluentd endpoint {fluentdHostAddress} failed with error message [{ex.Message}]");
             }
 
             return HealthCheckResult.Healthy();

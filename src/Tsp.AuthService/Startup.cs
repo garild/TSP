@@ -81,8 +81,6 @@ namespace Tsp.AuthService
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-                app.UseSerilogRequestLogger(loggerFactory);
 
             app.UseMiddleware<ExceptionHandlingMiddleware>();
             app.UseMiddleware<RequestResponseLoggingMiddleware>();
