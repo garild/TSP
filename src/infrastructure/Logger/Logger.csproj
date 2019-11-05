@@ -5,6 +5,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageOutputPath>$(MSBuildThisFileDirectory)../../../packages</PackageOutputPath>
     <PackageId>Tsp.Logger</PackageId>
+    <Authors>Garib Tigranyan</Authors>
+    <Version>1.0.1</Version>
+    <NeutralLanguage>English</NeutralLanguage>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
   </PropertyGroup>
 
 
