@@ -3,11 +3,9 @@ green=`tput setaf 2`
 reset=`tput sgr 0`
 yellow=`tput setaf 3`
 
-echo  "${yellow} \n Are you sure you want use this scripts ?? ${reset} (y/N)"
+read -p "${yellow} Are you sure you want use this scripts ?? ${reset} (y/N)" CONFIRM
 
-read accept
-
-if [ $accept == "y" ]; then
+if [ "$CONFIRM" = "y" ]; then
 echo  "${green} \n Deleteing all EFK stack components\n ${reset}"  
 
 sudo kubectl delete clusterrole fluentd
@@ -21,6 +19,7 @@ sudo kubectl delete -n default configmap kibana-config-map
 sudo kubectl delete -n default deployment kibana
 sudo kubectl delete -n default daemonset fluentd
 sudo kubectl delete -n default statefulset es-cluster 
+sudo kubectl delete -n default secret elasticsearch-user-password
 
 echo  "${green} \n \n Done! \n \n ${reset}"  
 else

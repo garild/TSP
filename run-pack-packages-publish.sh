@@ -1,4 +1,6 @@
 #! /bin/bash
+
+rm -r $(dirname $0)/packages
 Projects=$(dirname $0)/src/infrastructure/*
 
 for f in $Projects
