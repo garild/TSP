@@ -18,7 +18,40 @@ namespace Tsp.AuthService
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.CaptureStartupErrors(true);
-                    webBuilder.UseSerilog();
+                   .UseSerilog((ctx, config) =>
+            {
+                config.ReadFrom.Configuration(ctx.Configuration)
+                    .Enrich.FromLogContext()
+                    .MinimumLevel.Is(minimumLevelLog)
+                    .Enrich.WithProperty("Environment", ctx.HostingEnvironment.EnvironmentName)
+                    .Enrich.WithProperty("ServiceId", System.Environment.GetEnvironmentVariable("SERVICE_POD_NAME"));
+
+                if (ctx.HostingEnvironment.IsProduction() || ctx.HostingEnvironment.IsStaging())
+                {
+                    config.MinimumLevel.Override("Microsoft", overideMicrosoftLogLevel);
+
+                    config.WriteTo.File(
+                    new JsonFormatter(),
+                    Path.Combine(System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH"), $"{System.Environment.GetEnvironmentVariable("SERVICE_NAME")}_.log"),
+                    rollingInterval: RollingInterval.Day,
+                    shared: true,
+                    flushToDiskInterval: System.TimeSpan.FromSeconds(1)
+                    );
+                }
+
+                if (ctx.HostingEnvironment.IsDevelopment())
+                {
+                    config.WriteTo.File(
+                        new JsonFormatter(),
+                        Path.Combine("c://temp/", "pumba_.log"),
+                        rollingInterval: RollingInterval.Day,
+                        shared: true,
+                        flushToDiskInterval: System.TimeSpan.FromSeconds(1)
+                    );
+                }
+
+                config.WriteTo.Console();
+            });
                     webBuilder.UseStartup<Startup>();
                     webBuilder.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS"));
                 });

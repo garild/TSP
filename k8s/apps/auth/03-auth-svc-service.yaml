@@ -5,10 +5,12 @@ metadata:
     io.kompose.service: auth-svc
   name: auth-svc
 spec:
+  type: NodePort
   ports:
   - name: auth-svc-port
     port: 5010
     targetPort: 5010
+    nodePort: 31234
   selector:
     io.kompose.service: auth-svc
 status:

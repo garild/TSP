@@ -9,16 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{23
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tsp.AuthService", "src\Tsp.AuthService\Tsp.AuthService.csproj", "{50FD92D7-9160-47DC-AE55-726D4D572E1C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{A588EE43-C05B-43E1-B6FD-2BE9E9F92A58}"
-	ProjectSection(SolutionItems) = preProject
-		apps-develope-compose.yml = apps-develope-compose.yml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{7DFD42C5-2B78-43C3-8CA0-ABD35C86FEA4}"
-	ProjectSection(SolutionItems) = preProject
-		app-develop-stack.ps1 = app-develop-stack.ps1
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth", "src\infrastructure\Auth\Auth.csproj", "{8D75A5D2-30A4-4501-A8BA-2550D74DD3DA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionHandling", "src\infrastructure\ExceptionHandling\ExceptionHandling.csproj", "{8D84F218-8C7C-4D89-83E8-AF00F7032FE2}"
@@ -65,7 +55,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{50FD92D7-9160-47DC-AE55-726D4D572E1C} = {233DEDAF-E263-4618-A862-49D3A63F25AF}
-		{7DFD42C5-2B78-43C3-8CA0-ABD35C86FEA4} = {A588EE43-C05B-43E1-B6FD-2BE9E9F92A58}
 		{8D75A5D2-30A4-4501-A8BA-2550D74DD3DA} = {A6D11E07-5485-4771-8A41-AE4820B49AA9}
 		{8D84F218-8C7C-4D89-83E8-AF00F7032FE2} = {A6D11E07-5485-4771-8A41-AE4820B49AA9}
 		{F1C47167-D0C5-4191-BFA3-A7BFA4B811C6} = {A6D11E07-5485-4771-8A41-AE4820B49AA9}

@@ -24,4 +24,3 @@ data:
     xpack.security.enabled: true
     xpack.monitoring.collection.enabled: true
     xpack.security.audit.enabled: true
----

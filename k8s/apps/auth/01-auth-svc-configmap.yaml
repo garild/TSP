@@ -8,4 +8,5 @@ data:
   services-host: http://+:5010
   fluentd-host: http://fluentd-svc:9880
   elasticsearch-host: http://elasticsearch-svc:9200
-  service-logg-path: "/var/apps-logging"
+  es_pwd: "X47GCamMED9PYqwLGpHkEyZX"
+  service-logg-path: "/var/applogging"

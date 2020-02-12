@@ -38,21 +38,18 @@ spec:
           protocol: TCP
         env:
           - name:  FLUENT_ELASTICSEARCH_HOST
-            value: "elasticsearch-svc"
+            value: "1a2fa44801f945919aa313bc51a1fdc4.westeurope.azure.elastic-cloud.com"
           - name:  FLUENT_ELASTICSEARCH_PORT
-            value: "9200"
+            value: "9243"
           - name: FLUENT_ELASTICSEARCH_SCHEME
-            value: "http"
+            value: "https"
           - name: FLUENT_UID
             value: "0"
           # X-Pack Authentication
           - name: FLUENT_ELASTICSEARCH_USER
             value: "elastic"
           - name: FLUENT_ELASTICSEARCH_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: elasticsearch-user-password
-                key: password
+            value: "GJmwCe1ecKxd3g4I0vqXWOi7"
         resources:
           limits:
             memory: 200Mi
@@ -61,14 +58,14 @@ spec:
             memory: 200Mi
         volumeMounts:
         - name: varlog
-          mountPath: /var/apps-logging/
+          mountPath: /var/applogging/
         - name: fluentd-config
           mountPath: /fluentd/etc
       terminationGracePeriodSeconds: 30
       volumes:
       - name: varlog
         hostPath:
-          path: /var/apps-logging/
+          path: /var/applogging/
       # Mapping local config
       - name: fluentd-config
         configMap:

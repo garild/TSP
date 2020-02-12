@@ -33,7 +33,7 @@ spec:
             - name: ASPNETCORE_ENVIRONMENT 
               value: "Production"
             - name: FLUENTD_LOG_PATH
-              value: "/var/apps-logging/"
+              value: "/var/applogging/"
             - name: SERVICE_POD_NAME
               valueFrom:
                 fieldRef:
@@ -50,17 +50,14 @@ spec:
                   key: fluentd-host
             - name: ELASTICSEARCH_PASSWORD
               valueFrom:
-                secretKeyRef:
-                  name: elasticsearch-user-password
-                  key: password
+                configMapKeyRef:
+                  name: auth-configmap
+                  key: es_pwd
           volumeMounts:
-          - name: test-volume
-            mountPath: /var/apps-logging
+          - name: logg-volume
+            mountPath: /var/applogging
       volumes:
-      - name: test-volume
+      - name: logg-volume
         hostPath:
-          # directory location on host
-          path:  /var/apps-logging
-          # this field is optional
-          type: Directory
+          path:  /var/applogging
 status: {}
