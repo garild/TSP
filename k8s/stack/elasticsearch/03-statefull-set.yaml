@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: elasticsearch-svc
-        image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
         resources:
             limits:
               cpu: 1000m

@@ -17,5 +17,3 @@ data:
       hosts: ${ELASTICSEARCH_HOSTS}
       username: ${ELASTICSEARCH_USERNAME}
       password: ${ELASTICSEARCH_PASSWORD}
-
----

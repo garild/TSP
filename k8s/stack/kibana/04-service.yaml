@@ -7,7 +7,9 @@ metadata:
     app.kubernetes.io/component: kibana
 spec:
   ports:
-  - name: kibana-port
-    port: 5601
+    - name: kibana-port
+      port: 5601
+      nodePort: 32601
+  type: NodePort
   selector:
     app.kubernetes.io/component: kibana
