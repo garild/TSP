@@ -4,12 +4,14 @@ EXPOSE 5010
 ENV ASPNETCORE_URLS="http://+:5010"
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
-WORKDIR /src/Tsp.AuthService
+COPY . ./Tsp.AuthService
+
+WORKDIR /Tsp.AuthService
 RUN dotnet restore Tsp.AuthService.csproj
-RUN dotnet build -v q "Tsp.AuthService.csproj" -c Release -o /app/build
+RUN dotnet build -v q Tsp.AuthService.csproj -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Tsp.AuthService.csproj" -c Release -o /app/publish
+RUN dotnet publish -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

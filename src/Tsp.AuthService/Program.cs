@@ -19,6 +19,7 @@ namespace Tsp.AuthService
                 {
                     webBuilder.CaptureStartupErrors(true);
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseSerilog();
                     webBuilder.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS"));
                 });
 
