@@ -25,7 +25,7 @@ namespace Tsp.AuthService.Controllers
         [Route("[action]")]
         public JsonResult Login([FromBody] JwtUserDto user)
         {
-            // TODO Integrate with EF DB to save user
+            // APM ES Cloud test
             using var httpClient = new HttpClient { BaseAddress = new Uri("http://o2.pl") };
             httpClient.GetAsync("/");
 
