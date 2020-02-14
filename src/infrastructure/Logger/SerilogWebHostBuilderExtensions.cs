@@ -22,7 +22,7 @@ namespace ElasticsearchSerilog
 
                 if (ctx.HostingEnvironment.IsProduction() || ctx.HostingEnvironment.IsStaging())
                 {
-                    config.MinimumLevel.Override("Microsoft", overideMicrosoftLogLevel);
+                    config.MinimumLevel.Override("Microsoft.*", overideMicrosoftLogLevel);
 
                     //TODO  REMOVE THIS after k8s will be deployed
                     if (string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("FLUENTD_LOG_PATH")))
@@ -36,16 +36,13 @@ namespace ElasticsearchSerilog
                         shared: true,
                         flushToDiskInterval: System.TimeSpan.FromSeconds(1)
                         );
-
-                        config.WriteTo.Console();
                     }
                 }
 
                 if (ctx.HostingEnvironment.IsDevelopment())
-                {
                     config.MinimumLevel.Information();
-                    config.WriteTo.Console();
-                }
+
+                config.WriteTo.Console();
             });
         }
     }
