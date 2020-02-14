@@ -21,13 +21,9 @@ namespace Tsp.AuthService
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-              .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
-              .AddJsonFile("appsettings.json");
-
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
     
         public IConfiguration Configuration { get; }
