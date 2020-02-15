@@ -63,6 +63,7 @@ Run powershell script
 Run powershell script
 
 ` cd k8s/stack/efk/ `
+
 ` ./efk-stack-local_windows.sh ` or ` ./efk-stack-local.sh ` dep. on OS
 
 Rollout API
