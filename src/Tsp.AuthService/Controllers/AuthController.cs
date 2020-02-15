@@ -1,12 +1,12 @@
-﻿using Auth;
-using Auth.JWT;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Net.Http;
 using System;
 using Elastic.Apm;
 using Elastic.Apm.Api;
+using Tsp.Authorization;
+using Tsp.Authorization.JWT;
 
 namespace Tsp.AuthService.Controllers
 {

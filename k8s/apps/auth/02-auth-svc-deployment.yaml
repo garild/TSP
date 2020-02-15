@@ -16,10 +16,10 @@ spec:
       labels:
         io.kompose.service: auth-svc
     spec:
-      hostname: auth-svc-svc   
+      hostname: auth-api-svc
       restartPolicy: Always
       containers:
-        - name: auth-svc-svc
+        - name: auth-api-svc
           image: garild/tsp:auth-svc
           ports:
             - containerPort: 5010
@@ -30,9 +30,9 @@ spec:
               value: http://+:5010
             - name: SERVICE_NAME
               value: auth-svc
-            - name: ASPNETCORE_ENVIRONMENT 
+            - name: ASPNETCORE_ENVIRONMENT
               value: "Production"
-            - name: FLUENTD_LOG_PATH
+            - name: SERILOG_LOG_PATH
               value: "/var/applogging/"
             - name: SERVICE_POD_NAME
               valueFrom:
@@ -54,10 +54,10 @@ spec:
                   name: auth-configmap
                   key: es_pwd
           volumeMounts:
-          - name: logg-volume
-            mountPath: /var/applogging
+            - name: logg-volume
+              mountPath: /var/applogging
       volumes:
-      - name: logg-volume
-        hostPath:
-          path:  /var/applogging
+        - name: logg-volume
+          hostPath:
+            path: /var/applogging
 status: {}

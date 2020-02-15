@@ -1,8 +1,7 @@
+using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using ElasticsearchSerilog;
-using Serilog.Events;
-using System;
+using Tsp.Serilog.Extensions;
 
 namespace Tsp.AuthService
 {
@@ -19,7 +18,12 @@ namespace Tsp.AuthService
                 {
                     webBuilder.CaptureStartupErrors(true);
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseSerilog();
+                    webBuilder.UseSerilog(p =>
+                    {
+                        p.ClearProviders = true;
+                        p.WriteToFile = true;
+                        p.UseEvniromentVariables = true;
+                    });
                     webBuilder.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS"));
                 });
 
