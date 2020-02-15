@@ -1,0 +1,63 @@
+<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="../../assets/css/material-bootstrap-wizard.css" rel="stylesheet" />
+<link href="../../assets/css/demo.css" rel="stylesheet" />
+
+<div class="image-container set-full-height">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-md-6 col-sm-offset-3">
+            <!--      Wizard container        -->
+            <div class="wizard-container">
+                <app-alert></app-alert>
+
+                <div class="card">
+                    <div class="card-header"style="padding-left: 50px">
+                        <h4 class="card-title">Login Form</h4>
+                    </div>
+                    <div class="card-body" style="padding-left: 50px">
+                        <form class="validate-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Enter login" type="text" formControlName="username"
+                                            [ngClass]="{'is-invalid': submitted && f.username.errors }">
+                                        <mat-error>
+                                            <mat-error class="error-message">Login is required</mat-error>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Password" type="password" formControlName="password"
+                                            name="pass" placeholder="Enter password">
+                                        <mat-error>
+                                            <mat-error class="error-message">Password is required</mat-error>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Assigned Team" type="text" formControlName="team"
+                                            [ngClass]="{'is-invalid': submitted && f.team.errors }">
+                                        <mat-error>
+                                            <mat-error class="error-message">Team name is required</mat-error>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <br>
+                                <button mat-raised-button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div> <!-- wizard container -->
+            </div>
+        </div> <!-- row -->
+    </div> <!--  big container -->
+</div>

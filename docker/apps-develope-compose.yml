@@ -1,0 +1,111 @@
+version: '3.3'
+
+services:
+
+##########################################################################
+## Application Services
+##########################################################################
+  auth-svc:
+    image: garild/tsp:auth-svc
+    networks: 
+      - app_net
+    hostname: auth-svc
+    container_name: auth-svc
+    # depends_on:
+    #   - identity-svc
+    restart: always
+    environment:
+      - ASPNETCORE_URLS=http://+:5010
+      - ASPNETCORE_ENVIRONMENT=Production
+      - HEALTHCHECK_URL=http://localhost:5010/hc
+      - FLUENTD_HOST=http://fluentd-svc:9880
+      - HEALTHCHECK_ENDPOINT=/hc
+      - ELASTICSEARCH_HOSTS=http://elasticsearch-svc:9200
+    # env_file: 
+    #   - ./auth/.env
+    ports:
+      - "5010:5010"
+    expose:
+      - 5010
+    links:
+      - fluentd-svc
+    depends_on:
+      - fluentd-svc
+    logging:
+      driver: "fluentd"
+      options:
+          ## Do not change localhost to fluentd-svc - for some reasons it not work as shoudl
+          fluentd-address: localhost:24224
+          fluentd-async-connect: "true"
+          fluentd-retry-wait: "1s"
+          fluentd-max-retries: "30"
+          tag:  ${LOG_OPT_TAG_PREFIX}.efk.auth-svc
+
+###################################################
+## Elasticsearch-Fleuntd-Kibana Stack
+###################################################
+  fluentd-svc:
+    image: local/fluentd
+    build: 
+      context: ./images/fluentd
+    restart: always
+    container_name: fluentd-svc
+    hostname: fluentd-svc
+    environment:
+      - FLUENT_CONF=/fluentd/etc
+    links:
+      - elasticsearch-svc
+    depends_on:
+      - elasticsearch-svc
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+      - "9880:9880"
+    networks: 
+      - app_net
+    # env_file:
+    #   - ./images/fluentd/.env
+
+  elasticsearch-svc:
+    image: local/elasticsearch
+    restart: always
+    build:
+      context: ./images/elasticsearch
+    container_name: elasticsearch-svc
+    hostname: elasticsearch-svc
+    env_file: 
+      - ./images/elasticsearch/.env
+    ulimits:
+        memlock:
+            soft: -1
+            hard: -1
+    ports:
+      - "9200:9200"
+    expose:
+      - 9200
+    networks: 
+      - app_net
+
+  kibana-svc:
+    image: local/kibana
+    restart: always
+    build:
+      context: ./images/kibana
+    container_name: kibana-svc
+    hostname: kibana-svc
+    env_file: 
+      - ./images/kibana/.env
+    links:
+      - elasticsearch-svc
+    depends_on:
+      - elasticsearch-svc
+    ports:
+      - "5601:5601"
+    expose:
+      - 5601
+    networks: 
+      - app_net
+
+networks:
+  app_net:
+    driver: bridge

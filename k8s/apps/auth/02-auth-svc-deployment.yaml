@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: auth-svc
+  name: auth-svc
+spec:
+  selector:
+    matchLabels:
+      io.kompose.service: auth-svc
+  replicas: 3
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: auth-svc
+    spec:
+      hostname: auth-api-svc
+      restartPolicy: Always
+      containers:
+        - name: auth-api-svc
+          image: garild/tsp:auth-svc
+          ports:
+            - containerPort: 5010
+              name: "auth-svc-port"
+          resources: {}
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:5010
+            - name: SERVICE_NAME
+              value: auth-svc
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
+            - name: SERILOG_LOG_PATH
+              value: "/var/applogging/"
+            - name: SERVICE_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: ELASTICSEARCH_HOSTS
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-configmap
+                  key: elasticsearch-host
+            - name: FLUENTD_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-configmap
+                  key: fluentd-host
+            - name: ELASTICSEARCH_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: auth-configmap
+                  key: es_pwd
+          volumeMounts:
+            - name: logg-volume
+              mountPath: /var/applogging
+      volumes:
+        - name: logg-volume
+          hostPath:
+            path: /var/applogging
+status: {}

@@ -1,35 +1,27 @@
-#  Track Software Projects
+# Site
 
-## This project was seperate for 2 application layers:
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.12.
 
-I. Backend - microservices
-- [ ] **DDD** - Domain Driven Design architecture implementation
-- [ ] **CQRS** - Command Query Responsibility Segregation command patern 
-- [ ] **WebApi** - Service in .Net Core Framework
-- [ ] **EntityFramework Core - ORM** -  object-relational mapper witch allow db (enitites) migration and delivery fluent API for CRUD operation etc
-- [ ] **JWT Authorize** - Json Web Token authorization
-- [ ] **NLog** - log message has associated log level, which identifies how important/detailed the message 
-- [ ] **Cookie Authentication ASP.NET Core**
-- [ ] **NUnit Test** - integration,e2 and unit tests  
-- [ ] **Docker** - containler services builder/publisher
-- [x] **CI scripts**
-- [ ] **Swagger** - UI provides a display framework that reads an OpenAPI specification document and generates an interactive documentation website 
-- [ ] Kibana
-- [ ] Elasticsearch
-- [ ] FluentD
-- [ ] Redis
-- [ ] MongoDB
+## Development server
 
-II. Frontend - Angular 7 + Material
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-- https://material-components.github.io/material-components-web-catalog/#/
+## Code scaffolding
 
-**CLI:**
-1. npm install
-2. ng build
-3. ng serve -o
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
+## Build
 
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-**Services:**
-- [ ] AuthApi
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
