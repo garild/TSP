@@ -1,11 +1,4 @@
-using Auth.DI;
-using Auth.JWT;
-using Elastic.Apm.AspNetCore;
 using Elastic.Apm.NetCoreAll;
-using ElasticsearchSerilog;
-using ExceptionHandling;
-using ExceptionHandling.Exceptions;
-using HealthCheck;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -13,9 +6,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Swagger;
-using Swagger.Extensions;
 using System.Collections.Generic;
+using Tsp.Authorization.DI;
+using Tsp.Authorization.JWT;
+using Tsp.ExceptionHandling;
+using Tsp.ExceptionHandling.Exceptions;
+using Tsp.HealthCheck;
+using Tsp.Swagger;
+using Tsp.Swagger.Extensions;
 
 namespace Tsp.AuthService
 {

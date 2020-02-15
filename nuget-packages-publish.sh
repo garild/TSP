@@ -1,7 +1,7 @@
 #! /bin/bash
 
 rm -r $(dirname $0)/packages
-Projects=$(dirname $0)/src/infrastructure/*
+Projects=$(dirname $0)/src/Infrastructure/*
 
 for f in $Projects
 do
@@ -17,6 +17,5 @@ for f in $Nuggets
 do
   NuggetName="$(basename -- $f)"
   tput setaf 2; echo -e "\nPushing package $NuggetName ...\n"; tput sgr0;
-  dotnet nuget push $f -k oy2mzu7weg4mvjvvc5palw4msksnjjyerejn3ytmuvli2e -s https://api.nuget.org/v3/index.json
-
+  dotnet nuget push $f -k oy2pxibyklvcn7u35dda76fv2lpxfbee5glgqy7pecsqfu -s https://www.nuget.org
 done
