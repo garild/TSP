@@ -57,3 +57,17 @@ Run powershell script
    or 
    
 ` docker-compose -f apps-develope-compose.yml up --build -d `
+
+**Kubernete rollout**
+
+Run powershell script
+
+` cd k8s/stack/efk/ `
+` ./efk-stack-local_windows.sh ` or ` ./efk-stack-local.sh ` dep. on OS
+
+Rollout API
+
+`kubectl apply -f ../../apps/auth/`
+
+
+
