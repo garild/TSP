@@ -23,7 +23,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
     <PackageReference Include="Tsp.ExceptionHandling" Version="1.0.2.2" />
     <PackageReference Include="Tsp.HealthCheck" Version="1.0.2.2" />
-    <PackageReference Include="Tsp.Serilog" Version="1.0.2.2" />
+    <PackageReference Include="Tsp.Serilog" Version="1.0.2.3" />
     <PackageReference Include="Tsp.Swagger" Version="1.0.2.2" />
     <PackageReference Include="Tsp.Authorization" Version="1.0.2.2" />
   </ItemGroup>

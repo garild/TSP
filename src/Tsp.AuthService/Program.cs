@@ -22,7 +22,7 @@ namespace Tsp.AuthService
                     {
                         p.ClearProviders = true;
                         p.WriteToFile = true;
-                        p.UseEvniromentVariables = true;
+                        p.UseEnvironmentVariables = true;
                     });
                     webBuilder.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS"));
                 });
