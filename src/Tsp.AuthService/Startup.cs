@@ -7,11 +7,13 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
+using Serilog.Events;
 using Tsp.Authorization.DI;
 using Tsp.Authorization.JWT;
 using Tsp.ExceptionHandling;
 using Tsp.ExceptionHandling.Exceptions;
 using Tsp.HealthCheck;
+using Tsp.Serilog.Extensions;
 using Tsp.Swagger;
 using Tsp.Swagger.Extensions;
 
@@ -73,15 +75,16 @@ namespace Tsp.AuthService
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseAllElasticApm(Configuration);
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMiddleware<ExceptionHandlingMiddleware>();
-            app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            app.UseSerilogRequestContextLogging(p=>
+            {
+                p.EnableExceptionMiddleware = true;
+                p.LogLevel = LogEventLevel.Information;
+            });
 
             app.UseRouting();
 
