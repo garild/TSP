@@ -6,7 +6,7 @@
     <PackageOutputPath>$(MSBuildThisFileDirectory)../../../packages</PackageOutputPath>
     <PackageId>Tsp.Serilog</PackageId>
     <Authors>Garib Tigranyan</Authors>
-    <Version>1.0.2.2</Version>
+    <Version>1.0.2.3</Version>
     <NeutralLanguage>English</NeutralLanguage>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>

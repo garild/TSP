@@ -30,48 +30,47 @@ namespace Tsp.Serilog.Extensions
         }
         private static void Configure(SerilogOptions options, LoggerConfiguration config, LoggerConfigurationOptions configurationOptions, WebHostBuilderContext ctx)
         {
-           if(configurationOptions.UseEvniromentVariables)
-            {
-                options.ServiceName = TryGetEnvironmentVariable("SERVICE_POD_NAME");
-                options.FilePath = TryGetEnvironmentVariable("SERILOG_LOG_PATH");
-            }
-            else
-                ValidateOptions(new[] { options?.FilePath, options?.ServiceName });
+           if(configurationOptions.UseEnvironmentVariables)
+           {
+               options.ServiceName = TryGetEnvironmentVariable("SERVICE_POD_NAME");
+               options.FilePath = TryGetEnvironmentVariable("SERILOG_LOG_PATH");
+           }
+           else
+               ValidateOptions(new[] { options?.FilePath, options?.ServiceName });
            
-            config
-                .MinimumLevel.Override("Microsoft.AspNetCore", configurationOptions.OverrideDefaultLevelLog)
-                .MinimumLevel.Is(configurationOptions.MinimumLevelLog)
-                .Enrich.WithProperty("ServiceId", options.ServiceName)
-                .Enrich.WithProperty("Environment", ctx.HostingEnvironment.EnvironmentName)
-                .Enrich.FromLogContext()
-                .WriteTo.Console();
+           config
+               .MinimumLevel.Override("Microsoft.AspNetCore", configurationOptions.OverrideDefaultLevelLog)
+               .MinimumLevel.Is(configurationOptions.MinimumLevelLog)
+               .Enrich.WithProperty("ServiceId", options.ServiceName)
+               .Enrich.WithProperty("Environment", ctx.HostingEnvironment.EnvironmentName)
+               .Enrich.FromLogContext()
+               .WriteTo.Console();
 
-            if (!configurationOptions.WriteToFile) return;
+           if (!configurationOptions.WriteToFile) return;
 
-            var fileLogName = $"{options.ServiceName}_.log";
+           var fileLogName = $"{options.ServiceName}_.log";
 
-            config.WriteTo.File(
-                           new JsonFormatter(renderMessage: false),
-                            Path.Combine(options.FilePath, fileLogName),
-                            rollingInterval: RollingInterval.Day,
-                            rollOnFileSizeLimit: true,
-                            retainedFileCountLimit: 5,
-                            fileSizeLimitBytes: 500_000_000,
-                            shared: true,
-                            //outputTemplate: options.OutputTemplate,
-                            flushToDiskInterval: TimeSpan.FromSeconds(1)
-                           );
+           config.WriteTo.File(
+               new JsonFormatter(renderMessage: false),
+               Path.Combine(options.FilePath, fileLogName),
+               rollingInterval: RollingInterval.Day,
+               rollOnFileSizeLimit: true,
+               retainedFileCountLimit: 5,
+               fileSizeLimitBytes: 500_000_000,
+               shared: true,
+               flushToDiskInterval: TimeSpan.FromSeconds(1)
+           );
 
         }
         private static Action<string[]> ValidateOptions => (data) =>
         {
             if (data.Any(string.IsNullOrEmpty))
-                throw new ArgumentNullException("Invalid configuration of serilog section .");
+                throw new ArgumentNullException(paramName: nameof(data), "Invalid configuration of serilog section .");
         };
 
         private static string TryGetEnvironmentVariable(string variable) =>
             string.IsNullOrEmpty(variable)
-            ? throw new ArgumentNullException(variable, "Enviroment variable cannot be null .")
+            ? throw new ArgumentNullException(variable, "Environment variable cannot be null .")
             : Environment.GetEnvironmentVariable(variable);
     }
 }
