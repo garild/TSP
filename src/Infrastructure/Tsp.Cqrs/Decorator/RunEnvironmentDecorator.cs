@@ -1,4 +1,6 @@
-﻿namespace Tsp.Cqrs.Decorator
+﻿using System.Threading;
+
+namespace Tsp.Cqrs.Decorator
 {
     internal class RunEnvironmentDecorator : IRunEnvironment
     {
@@ -9,14 +11,14 @@
             _runEnvironment = runEnvironment;
         }
 
-        public void RunCommand<T>(T command)
+        public void RunCommand<T>(T command, CancellationToken cancellationToken = default)
         {
-            _runEnvironment.RunCommand(command);
+            _runEnvironment.RunCommand(command, cancellationToken);
         }
 
-        public TOut RunCommand<T, TOut>(T command)
+        public TOut RunCommand<T, TOut>(T command, CancellationToken cancellationToken = default)
         {
-            return _runEnvironment.RunCommand<T, TOut>(command);
+            return _runEnvironment.RunCommand<T, TOut>(command, cancellationToken);
         }
 
         public TResponse RunQuery<TQuery, TResponse>(TQuery query)

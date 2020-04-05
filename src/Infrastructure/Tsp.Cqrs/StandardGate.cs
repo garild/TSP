@@ -1,3 +1,5 @@
+using System.Threading;
+
 namespace Tsp.Cqrs
 {
     public class StandardGate : IGate
@@ -9,14 +11,14 @@ namespace Tsp.Cqrs
             _runEnvironment = environment;
         }
 
-        public void RunCommand<T>(T command)
+        public void RunCommand<T>(T command, CancellationToken cancellationToken)
         {
-            _runEnvironment.RunCommand(command);
+            _runEnvironment.RunCommand(command, cancellationToken);
         }
 
-        public TOut RunCommand<T, TOut>(T command)
+        public TOut RunCommand<T, TOut>(T command, CancellationToken cancellationToken)
         {
-            return _runEnvironment.RunCommand<T, TOut>(command);
+            return _runEnvironment.RunCommand<T, TOut>(command, cancellationToken);
         }
 
         public TResponse RunQuery<TQuery, TResponse>(TQuery query)

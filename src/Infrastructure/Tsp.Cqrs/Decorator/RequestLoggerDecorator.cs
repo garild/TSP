@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json;
+using System.Threading;
 using Microsoft.Extensions.Logging;
 
 namespace Tsp.Cqrs.Decorator
@@ -16,13 +17,13 @@ namespace Tsp.Cqrs.Decorator
             _logger = logger.CreateLogger<RequestLoggerDecorator>();
         }
 
-        public TOut RunCommand<T, TOut>(T command)
+        public TOut RunCommand<T, TOut>(T command, CancellationToken cancellationToken = default)
         {
             try
             {
                 _logger.LogInformation(
                     $"{typeof(T).FullName} serialized input command: {JsonSerializer.Serialize(command)}");
-                return _runEnvironment.RunCommand<T, TOut>(command);
+                return _runEnvironment.RunCommand<T, TOut>(command, cancellationToken);
             }
             catch (Exception e)
             {
@@ -32,13 +33,13 @@ namespace Tsp.Cqrs.Decorator
             }
         }
 
-        public void RunCommand<T>(T command)
+        public void RunCommand<T>(T command, CancellationToken cancellationToken = default)
         {
             try
             {
                 _logger.LogInformation(
                     $"{typeof(T).FullName} serialized input command: {JsonSerializer.Serialize(command)}");
-                _runEnvironment.RunCommand(command);
+                _runEnvironment.RunCommand(command, cancellationToken);
             }
             catch (Exception e)
             {

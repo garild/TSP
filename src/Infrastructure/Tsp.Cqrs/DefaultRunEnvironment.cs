@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Tsp.Cqrs.Handler.Commands;
 using Tsp.Cqrs.Handler.Queries;
 
@@ -15,16 +16,16 @@ namespace Tsp.Cqrs
             _queryFactory = queryFactory;
         }
 
-        public void RunCommand<T>(T command)
+        public void RunCommand<T>(T command, CancellationToken cancellationToken = default)
         {
             var handler = _commandFactory.CreateCommand<T>();
-            handler.Handle(command);
+            handler.Handle(command, cancellationToken);
         }
 
-        public TOut RunCommand<T, TOut>(T command)
+        public TOut RunCommand<T, TOut>(T command, CancellationToken cancellationToken = default)
         {
             var handler = _commandFactory.CreateCommand<T, TOut>();
-            var result = handler.Handle(command);
+            var result = handler.Handle(command, cancellationToken);
             return result;
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Transactions;
+﻿using System.Threading;
+using System.Transactions;
 
 namespace Tsp.Cqrs.Decorator
 {
@@ -11,21 +12,21 @@ namespace Tsp.Cqrs.Decorator
             _runEnvironment = runEnvironment;
         }
 
-        public TResult RunCommand<TCommand, TResult>(TCommand command)
+        public TResult RunCommand<TCommand, TResult>(TCommand command, CancellationToken cancellationToken = default)
         {
             using (var t = new TransactionScope(TransactionScopeOption.Required,
                 new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
             {
-                return _runEnvironment.RunCommand<TCommand, TResult>(command);
+                return _runEnvironment.RunCommand<TCommand, TResult>(command, cancellationToken);
             }
         }
 
-        public void RunCommand<T>(T command)
+        public void RunCommand<T>(T command, CancellationToken cancellationToken = default)
         {
             using (var t = new TransactionScope(TransactionScopeOption.Required,
                 new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
             {
-                _runEnvironment.RunCommand(command);
+                _runEnvironment.RunCommand(command, cancellationToken);
             }
         }
 
