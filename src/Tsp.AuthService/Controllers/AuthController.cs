@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System.Net.Http;
-using System;
-using Elastic.Apm;
-using Elastic.Apm.Api;
 using Tsp.Authorization;
 using Tsp.Authorization.JWT;
 
@@ -25,21 +20,7 @@ namespace Tsp.AuthService.Controllers
         [Route("[action]")]
         public JsonResult Login([FromBody] JwtUserDto user)
         {
-            // APM ES Cloud test
-            using var httpClient = new HttpClient { BaseAddress = new Uri("http://o2.pl") };
-            httpClient.GetAsync("/");
-
-
-            using var httpClient_google = new HttpClient { BaseAddress = new Uri("http://google.pl") };
-            httpClient_google.GetAsync("/");
-
-            //Method 1
-
-           Agent.Tracer.Capture(()=> _authorizeHandler.AuthorizeUser(user, HttpContext));
-
-            //Method2 
-            Agent.Tracer.CurrentTransaction.CaptureSpan("Method  2", "Authhandler 2", () =>
-           _authorizeHandler.AuthorizeUser(user, HttpContext));
+           _authorizeHandler.AuthorizeUser(user, HttpContext);
 
             return Json(user);
         }
